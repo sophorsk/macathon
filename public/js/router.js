@@ -1,5 +1,5 @@
-define(["views/index", "views/profile", "views/login", "models/Item", "models/ItemCollection", "views/listings"],
-    function(IndexView, ProfileView, LoginView, Item, ItemCollection, ListingsView) {
+define(["views/index", "views/profile", "views/login", "models/Item", "models/ItemCollection", "views/listings", "models/Profile"],
+    function(IndexView, ProfileView, LoginView, Item, ItemCollection, ListingsView, Profile) {
 
         var ApplicationRouter = Backbone.Router.extend({
 
@@ -23,6 +23,13 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
 
         login: function() {
             this.changeView(new LoginView());
+        },
+
+
+        profile: function() {
+            var model = new Profile({ });
+            this.changeView(new ProfileView({ model: model}));
+            model.fetch();
         },
 
         index: function() {
