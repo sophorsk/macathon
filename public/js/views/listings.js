@@ -9,7 +9,6 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item', 'models/Item']
             },
 
             initialize: function() {
-                console.log("Data:" + this.collection);
                 this.collection.on('reset', this.onItemCollectionReset, this);
             },
 

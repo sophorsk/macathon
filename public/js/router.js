@@ -38,7 +38,6 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
         listings: function() {
             var sellingCollection = new ItemCollection();
             sellingCollection.url = "/api/accounts/me/items";
-            console.log("Load listings !");
             this.changeView(new ListingsView({
                 collection: sellingCollection
             }));
