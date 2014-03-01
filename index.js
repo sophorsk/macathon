@@ -5,9 +5,7 @@ var pg = require('pg').native;
 var sha1 = require('sha1');
 
 // import the models
-var models = {
-    Model: require('./server/models/Model')(pg)
-};
+var db = require('./server/models/Model')(pg);
 
 app.configure(function() {
     app.set('view engine', 'jade');
@@ -45,7 +43,7 @@ app.post('/login', function(req, res) {
 
     var password_hash = sha1(password);
 
-    models.Model.login(email, password_hash, function(err, account) {
+    db.login(email, password_hash, function(err, account) {
         if (err) {
             res.send(400);
             return;
@@ -73,7 +71,7 @@ app.get('/logout', function(req, res) {
 app.get('/accounts/:id', function(req, res) {
     var accountId = req.session.accountId;
 
-    models.Model.findUserById(accountId, function(account) {
+    db.findUserById(accountId, function(account) {
         console.log(account);
         res.send(account);
     })
@@ -94,7 +92,7 @@ app.post('/accounts/:id/item', function(req, res) {
         picture : null,
     };
 
-    models.Model.postItem(accountId, item, function(err) {
+    db.postItem(accountId, item, function(err) {
         res.send(err ? 400 : 200);
     });
 });
@@ -104,7 +102,7 @@ app.post('/accounts/:id/item', function(req, res) {
  * All APIs for items
  */
 app.get('/items/all', function(req, res) {
-    models.Model.loadAllItems(function(err, allItems) {
+    db.loadAllItems(function(err, allItems) {
         if (err) {
             res.send(400);
         } else {
@@ -118,7 +116,7 @@ app.get('/items/:itemId', function(req, res) {
     var accountId = req.session.accountId;
 
     var itemId = req.param('itemId');
-    models.Model.findItemById(itemId, function(err, item) {
+    db.findItemById(itemId, function(err, item) {
         res.send(err ? 400 : item);
     });
 });
@@ -129,7 +127,7 @@ app.post('/items', function(req, res) {
     var itemId = req.param('itemId');
     var price_in_cents = req.param('price_in_cents');
 
-    models.Model.makeOffer(itemId, accountId, price_in_cents, function(err) {
+    db.makeOffer(itemId, accountId, price_in_cents, function(err) {
         res.send(err ? 400 : 200);
     });
 });
@@ -138,7 +136,7 @@ app.delete('/items', function(req, res) {
     var accountId = req.session.accountId;
     var itemId = req.param('itemId');
 
-    models.Model.deleteItem(accountId, itemId, function(err) {
+    db.deleteItem(accountId, itemId, function(err) {
         res.send(err ? 400 : 200);
     });
 });
@@ -148,7 +146,7 @@ app.post('/items/search', function(req, res) {
     var search_text = req.param('searchString');
     var filter = req.param('filter');
 
-    models.Model.searchItems(search_category, search_text, function(err, items) {
+    db.searchItems(search_category, search_text, function(err, items) {
         if (err || items.length == 0) {
             res.send(404);
         } else {
@@ -165,7 +163,7 @@ app.post('/items/search', function(req, res) {
 app.get('/messages', function(req, res) {
     var accountId = req.session.accountId;
 
-    models.Model.getIncomingMessages(accountId, function(err, messages) {
+    db.getIncomingMessages(accountId, function(err, messages) {
         res.send(err ? 404 : messages);
     });
 });
@@ -176,8 +174,7 @@ app.post('/sendmsg/:id', function(req, res) {
     var from_account_id = req.session.accountId;
     var to_account_id = req.param('recipient');
 
-    models.Model.sendMessage(message_text, from_account_id,
-                             to_account_id, function(err) {
+    db.sendMessage(message_text, from_account_id, to_account_id, function(err) {
         res.send(err ? 400 : 200);
     });
 });
