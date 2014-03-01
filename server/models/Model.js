@@ -178,6 +178,27 @@ exports.makeOffer = function(item_id, account_id, price_in_cents, callback)
     });
 }
 
+exports.getBuyerOffers = function(buyer_account_id, callback)
+{
+    runQuery("SELECT * FROM offer WHERE account = $1\n",
+             [buyer_account_id],
+             function(err, result)
+    {
+        callback(err, (result == null ? null : result.rows));
+    });
+}
+
+exports.getSellerOffers = function(seller_account_id, callback)
+{
+    runQuery("SELECT offer.* FROM offer, item " +
+             "WHERE item.seller = $1 AND offer.item = item.id;\n",
+             [seller_account_id],
+             function(err, result)
+    {
+        callback(err, (result == null ? null : result.rows));
+    });
+}
+
 exports.sendMessage = function(message_text, from_account_id, to_account_id,
                                callback)
 {
@@ -191,10 +212,20 @@ exports.sendMessage = function(message_text, from_account_id, to_account_id,
     });
 }
 
+exports.getIncomingMessages = function(account_id, callback)
+{
+    runQuery("SELECT * FROM message WHERE to_account = $1;\n",
+             [account_id],
+             function(err, result)
+    {
+        callback(err, (result == null ? null : result.rows));
+    });
+}
+
 exports.deleteItem = function(account_id, item_id, callback)
 {
-    runQuery("DELETE FROM item WHERE id = $1;\n",
-             [item_id],
+    runQuery("DELETE FROM item WHERE id = $1 AND seller = $2;\n",
+             [item_id, account_id],
              function(err, result)
     {
         callback(err);
