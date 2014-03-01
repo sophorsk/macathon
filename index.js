@@ -15,7 +15,7 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({
-        secret: "",
+        secret: " ",
         store: new MemoryStore()
     }));
 });
@@ -42,7 +42,7 @@ app.post('/login', function(req, res) {
         return;
     }
 
-    models.Model.login(email, password, function(account) {
+    models.Model.login(email, password, function(err, account) {
         if (!account) {
             res.send(400);
             return;
@@ -79,20 +79,21 @@ app.get('/accounts/:id', function(req, res) {
 app.post('/accounts/:id/item', function(req, res) {
     var accountId = req.session.accountId;
 
-    models.Model.findUserById(accountId, function(account) {
-        var item = {
-            itemName: req.param('itemName', ''),
-            itemDescription: req.param('itemDescription', ''),
-            price: req.param('price', ''),
-            category: req.param('category', ''),
-            timePosted: req.param('timePosted', '')
-        }
+    var item = {
+        itemName: req.param('itemName', ''),
+        itemDescription: req.param('itemDescription', ''),
+        price: req.param('price', ''),
+        category: req.param('category', ''),
+        timePosted: req.param('timePosted', '')
+    }
 
-        // change here
-        models.Model.postItem(accountId, item, function(object) {
-            res.send(object);
-        });
+    // change here
+    models.Model.postItem(accountId, item, function(err) {
+        if (err) {
+            console.log(err);
+        }
     });
+    res.send(200);
 });
 
 
@@ -106,7 +107,7 @@ app.get('/items/all', function(req, res) {
     })
 });
 
-app.get('/items/:id', function(req, res) {
+app.get('/items/:itemId', function(req, res) {
     var accountId = req.session.accountId;
 
     var itemId = req.param('itemId', null);
@@ -114,6 +115,19 @@ app.get('/items/:id', function(req, res) {
         console.log(item);
         res.send(item);
     });
+});
+
+app.delete('/items', function(req, res) {
+    var accountId = req.session.accountId;
+
+    var itemId = req.param('itemId', null);
+
+    models.Model.deleteItem(accountId, itemId, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+    res.send(200);
 });
 
 app.post('/items/search', function(req, res) {
@@ -139,8 +153,14 @@ app.post('/items/search', function(req, res) {
 /**
  * APIs for messaging
  */
-app.get('/accounts')
+// load all messages for a user
+app.get('/accounts/:id/messages', function(req, res) {
 
+});
+
+app.post('/accounts/:id/messages', function(req, res) {
+
+});
 
 
 app.listen(8080);
