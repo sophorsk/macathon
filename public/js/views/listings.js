@@ -8,24 +8,6 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item', 'models/Item']
                 "submit form": "postItem"
             },
 
-            initialize: function() {
-                this.collection.on('reset', this.onItemCollectionReset, this);
-            },
-
-            onItemCollectionReset: function(collection) {
-                var that = this;
-                collection.each(function(item) {
-                    that.onItemAdded(item);
-                })
-            },
-
-            onItemAdded: function(item) {
-                var itemHtml = (new ItemView({
-                    model: item
-                })).render().el;
-                $(itemHtml).prependTo('.sell_items').hide().fadeIn('slow');
-            },
-
             postItem: function() {
                 console.log(this.model.toJSON());
                 var $messageArea = this.$('.messageArea');
@@ -41,6 +23,25 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item', 'models/Item']
                     });
 
                 return false;
+            },
+
+            initialize: function() {
+                this.collection.on('reset', this.onItemCollectionReset, this);
+            },
+
+            onItemCollectionReset: function(collection) {
+                var that = this;
+                collection.each(function(item) {
+                    that.onItemAdded(item);
+                })
+            },
+
+            onItemAdded: function(item) {
+                var itemHtml = (new ItemView({
+                    model: item
+                })).render().el;
+
+                $(itemHtml).prependTo('.sell_items').hide().fadeIn('slow');
             },
 
             render: function() {
