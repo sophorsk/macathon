@@ -158,26 +158,24 @@ app.post('/items/search', function(req, res) {
  * APIs for messaging
  */
 // load all messages for a user
-app.get('/accounts/:id/messages', function(req, res) {
+app.get('/messages', function(req, res) {
     var accountId = req.session.accountId;
 
-    models.Model.loadAllMessages(accountId, function(messages) {
-        res.send(messages);
-    })
+    models.Model.getIncomingMessages(accountId, function(err, messages) {
+        res.send(err ? 404 : messages);
+    });
 });
 
-app.post('/accounts/:id/messages', function(req, res) {
-    var accountId = req.session.accountId;
+app.post('/sendmsg/:id', function(req, res) {
 
-    var recipientId = req.param('recipient', null);
-    var content = req.param('text', null);
+    var message_text = req.param('text');
+    var from_account_id = req.session.accountId;
+    var to_account_id = req.param('recipient');
 
-    models.Model.sendMessage(content, accountId, recipientId, function(err) {
-        if (err) {
-            console.log(err);
-        }
+    models.Model.sendMessage(message_text, from_account_id,
+                             to_account_id, function(err) {
+        res.send(err ? 400 : 200);
     });
-    res.send(200);
 });
 
 
