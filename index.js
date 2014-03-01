@@ -56,7 +56,7 @@ app.post('/login', function(req, res) {
 
         console.log('login was successful');
         req.session.loggedIn = true;
-        req.session.accountId = account.id;
+        req.session.account_id = account.id;
         res.send(200);
     });
 
@@ -70,36 +70,63 @@ app.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
+
 /***
  * All APIs for users
  */
-app.get('/accounts/:id', function(req, res) {
-    var accountId = req.session.accountId;
 
-    db.findUserById(accountId, function(account) {
-        console.log(account);
-        res.send(account);
-    })
-});
+function getAccountInfo(req, res, account_id) {
+    db.findAccountById(account_id, function(err, account) {
+        if (err) {
+            res.send(404);
+        } else {
+            console.log(account);
 
-app.get('/accounts/me', function(req, res) {
+            account.password_sha1 = undefined;
+            account.pending_key = undefined;
+            account.email_address = undefined;
 
-});
-
-app.post('/accounts/:id/item', function(req, res) {
-    var accountId = req.session.accountId;
-
-    var item = {
-        name: req.param('name'),
-        category: req.param('category'),
-        description: req.param('description'),
-        price_in_cents: req.param('price_in_cents'),
-        picture : null,
-    };
-
-    db.postItem(accountId, item, function(err) {
-        res.send(err ? 400 : 200);
+            res.send(account);
+        }
     });
+}
+
+/* Get information about the currently logged in account.  */
+app.get('/accounts/me', function(req, res) {
+    var account_id = req.session.account_id;
+    if (account_id == undefined) {
+        res.send(400);
+        return;
+    }
+    getAccountInfo(req, res, account_id);
+});
+
+/* Get information about an account specified by ID.  */
+app.get('/accounts/:account_id', function(req, res) {
+    getAccountInfo(req, res, req.param('account_id'));
+
+});
+
+function getItemsForSale(req, res, seller_id) {
+    db.findItemsBySeller(seller_id, function(err, result) {
+        res.send(err ? 400 : result);
+    });
+}
+
+/* Get the items for sale by the currently logged in account.  */
+app.get('/accounts/me/items', function(req, res) {
+    var seller_id = req.session.account_id;
+    if (seller_id == undefined) {
+        res.send(400);
+        return;
+    }
+    getItemsForSale(req, res, seller_id);
+});
+
+/* Get the items for sale by the specified account.  */
+app.get('/accounts/:account_id/items', function(req, res) {
+    var seller_id = req.param('account_id');
+    getItemsForSale(req, res, seller_id);
 });
 
 
@@ -107,6 +134,7 @@ app.post('/accounts/:id/item', function(req, res) {
  * All APIs for items
  */
 
+/* Search the items by category and search string.  */
 app.get('/items', function(req, res) {
 
     var search_category = req.param('category');
@@ -121,53 +149,73 @@ app.get('/items', function(req, res) {
     });
 });
 
-app.get('/items/:itemId', function(req, res) {
-    var accountId = req.session.accountId;
+/* Post an item for sale using the currently logged in account.  */
+app.post('/post_item', function(req, res) {
+    var account_id = req.session.account_id;
 
-    var itemId = req.param('itemId');
-    db.findItemById(itemId, function(err, item) {
+    if (account_id == undefined) {
+        res.send(400);
+        return;
+    }
+
+    var item = {
+        name: req.param('name'),
+        category: req.param('category'),
+        description: req.param('description'),
+        price_in_cents: req.param('price_in_cents'),
+        picture : null,
+    };
+
+    db.postItem(account_id, item, function(err) {
+        res.send(err ? 400 : 200);
+    });
+});
+
+/* Get information about the specified item.  */
+app.get('/items/:item_id', function(req, res) {
+    var item_id = req.param('item_id');
+    db.findItemById(item_id, function(err, item) {
         res.send(err ? 404 : item);
     });
 });
 
 app.post('/items', function(req, res) {
-    var accountId = req.session.accountId;
+    var account_id = req.session.account_id;
 
     var itemId = req.param('itemId');
     var price_in_cents = req.param('price_in_cents');
 
-    db.makeOffer(itemId, accountId, price_in_cents, function(err) {
+    db.makeOffer(itemId, account_id, price_in_cents, function(err) {
         res.send(err ? 400 : 200);
     });
 });
 
 app.delete('/items', function(req, res) {
-    var accountId = req.session.accountId;
+    var account_id = req.session.account_id;
     var itemId = req.param('itemId');
 
-    db.deleteItem(accountId, itemId, function(err) {
+    db.deleteItem(account_id, itemId, function(err) {
         res.send(err ? 400 : 200);
     });
 });
-
 
 /**
  * APIs for messaging
  */
 // load all messages for a user
 app.get('/messages', function(req, res) {
-    var accountId = req.session.accountId;
+    var account_id = req.session.account_id;
 
-    db.getIncomingMessages(accountId, function(err, messages) {
+    db.getIncomingMessages(account_id, function(err, messages) {
         res.send(err ? 404 : messages);
     });
 });
 
-app.post('/sendmsg/:id', function(req, res) {
+app.post('/send_message/:to_account_id', function(req, res) {
 
-    var message_text = req.param('text');
-    var from_account_id = req.session.accountId;
-    var to_account_id = req.param('recipient');
+    var message_text = req.param('message_text');
+    var from_account_id = req.session.account_id;
+    var to_account_id = req.param('to_account_id');
 
     db.sendMessage(message_text, from_account_id, to_account_id, function(err) {
         res.send(err ? 400 : 200);

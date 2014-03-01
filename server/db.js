@@ -122,6 +122,7 @@ exports.login = function(email_address, password_sha1, callback)
     {
         if (!err && result.rows.length == 0) {
             err = "email address and/or password not found";
+            result = null;
         }
         callback(err, (result ? result.rows[0] : null));
     });
@@ -133,6 +134,10 @@ exports.findAccountById = function(account_id, callback)
              [account_id],
              function(err, result)
     {
+        if (!err && result.rows.length == 0) {
+            err = "account not found";
+            result = null;
+        }
         callback(err, (result ? result.rows[0] : null));
     });
 }
@@ -180,10 +185,20 @@ exports.findItemById = function(item_id, callback)
              [item_id],
              function(err, result)
     {
-        if (!err && result.rows.length == 0) {
+        if (!err && result.rows.length != 1) {
             err = "item not found";
             result = null;
         }
+        callback(err, result.rows[0]);
+    });
+}
+
+exports.findItemsBySeller = function(seller_id, callback)
+{
+    runQuery("SELECT * FROM item WHERE seller = $1;\n",
+             [seller_id],
+             function(err, result)
+    {
         callback(err, result);
     });
 }
