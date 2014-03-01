@@ -20,7 +20,7 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({
-        secret: "PartyFinder secret key",
+        secret: "",
         store: new MemoryStore()
     }));
 
@@ -59,23 +59,33 @@ app.post('/login', function(req, res) {
 
         console.log('login was successful');
         req.session.loggedIn = true;
-        req.session.accountId = account.;
+        req.session.accountId = account.id;
         res.send(200);
     });
 
 });
 
-app.post('/register', function(req, res) {
-
-});
-
 app.get('/logout', function(req, res) {
+    if (req.session) {
+        req.session.auth = null;
+        req.session.destroy();
+        res.redirect('/');
+    }
+});
+
+app.get('/accounts/:id', function(req, res) {
 
 });
 
+app.get('/items/all', function(req, res) {
 
-/****/
-app.get('/accounts/:id', function(req, res) {
+});
+
+app.get('/items/:id', function(req, res) {
+
+});
+
+app.get('/items/:categoryId', function(req, res) {
 
 });
 
