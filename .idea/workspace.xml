@@ -7,8 +7,8 @@
     </list>
     <ignored path="macathon.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393658667430" ignored="false" />
-    <file path="/index.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393659410217" ignored="false" />
+    <file path="/Dummy.txt" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393659503561" ignored="false" />
+    <file path="/index.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393659971054" ignored="false" />
     <file path="/Model.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393649619305" ignored="false" />
     <file path="/package.json" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393644896832" ignored="false" />
     <file path="/layout.jade" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393645846439" ignored="false" />
@@ -47,7 +47,7 @@
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="16" selection-start="399" selection-end="399" vertical-scroll-proportion="0.328125">
+            <state line="131" column="18" selection-start="3113" selection-end="3113" vertical-scroll-proportion="0.8125">
               <folding />
             </state>
           </provider>
@@ -65,7 +65,7 @@
       <file leaf-file-name="Model.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/models/Model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="10" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.0">
+            <state line="98" column="10" selection-start="4150" selection-end="4150" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,7 +145,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="120" />
+    <option name="x" value="335" />
     <option name="y" value="22" />
     <option name="width" value="1260" />
     <option name="height" value="760" />
@@ -176,6 +176,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -340,14 +341,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.js" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.js" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
@@ -391,7 +391,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="120" y="22" width="1260" height="760" extended-state="0" />
+    <frame x="335" y="22" width="1260" height="760" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -496,9 +496,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/styles/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/templates/index.html">
@@ -543,13 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/boot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -573,14 +564,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/models/Model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="10" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.0">
+        <state line="98" column="10" selection-start="4150" selection-end="4150" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/boot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="16" selection-start="399" selection-end="399" vertical-scroll-proportion="0.328125">
+        <state line="131" column="18" selection-start="3113" selection-end="3113" vertical-scroll-proportion="0.8125">
           <folding />
         </state>
       </provider>

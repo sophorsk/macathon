@@ -117,6 +117,21 @@ app.get('/items/:itemId', function(req, res) {
     });
 });
 
+app.post('/items', function(req, res) {
+    var accountId = req.session.accountId;
+
+    var itemId = req.param('itemId', null);
+    var price = req.param('price_offer', null);
+
+    models.Model.makeOffer(itemId, accountId, price, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+
+    res.send(200);
+});
+
 app.delete('/items', function(req, res) {
     var accountId = req.session.accountId;
 
@@ -155,11 +170,23 @@ app.post('/items/search', function(req, res) {
  */
 // load all messages for a user
 app.get('/accounts/:id/messages', function(req, res) {
+    var accountId = req.session.accountId;
 
+    models.Model.loadAllMessages(accountId, function(messages) {
+        res.send(messages);
+    })
 });
 
 app.post('/accounts/:id/messages', function(req, res) {
+    var accountId = req.session.accountId;
 
+    var recipientId = req.param('recipient', null);
+    models.Model.sendMessage(accountId, recipientId, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+    res.send(200)
 });
 
 
