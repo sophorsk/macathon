@@ -288,10 +288,13 @@ loadTestImage = function(name) {
 }
 
 storeTestData = function(callback) {
-    var email_address = "test@example.edu";
+    var email_address_1 = "test@example.edu";
+    var email_address_2 = "test2@example.edu";
     var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // "password"
-    exports.register(email_address, password_sha1, "Joe", "Example", function(err) {
-    exports.login(email_address, password_sha1, function(err, account) {
+
+    exports.register(email_address_1, password_sha1, "Joe", "Example", function(err) {
+    exports.register(email_address_2, password_sha1, "Bob", "Testing", function(err) {
+    exports.login(email_address_1, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Essentials Watch",
                                    category : "Watches",
                                    price_in_cents : 4000,
@@ -307,6 +310,7 @@ storeTestData = function(callback) {
                                    price_in_cents : 1500,
                                    picture: loadTestImage("chair")},
                                    function(err) {
+    exports.login(email_address_2, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Backpack",
                                    category : "Backpacking",
                                    price_in_cents : 1000,
@@ -326,5 +330,5 @@ storeTestData = function(callback) {
                                                  "FLOOR CENTER SEATS.",
                                    price_in_cents : 6000}, function(err) {
         callback();
-    })})})})})})});});
+    })})})})})})})})})});
 }
