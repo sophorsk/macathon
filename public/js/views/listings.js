@@ -2,7 +2,8 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
     function(CoBoView, listingTemplate, ItemView) {
 
         var listingsView = CoBoView.extend({
-            el: $("content"),
+
+            el: $("#content"),
 
             events: {
                 "submit form": "postItem"
@@ -26,7 +27,6 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
             },
 
             initialize: function() {
-                console.log(this.collection);
                 this.collection.on('reset', this.onItemCollectionReset, this);
             },
 
@@ -51,4 +51,4 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
         });
 
         return listingsView;
-    })
+});
