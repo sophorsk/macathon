@@ -83,20 +83,16 @@ app.post('/accounts/:id/item', function(req, res) {
     var accountId = req.session.accountId;
 
     var item = {
-        itemName: req.param('itemName', ''),
-        itemDescription: req.param('itemDescription', ''),
-        price: req.param('price', ''),
-        category: req.param('category', ''),
-        timePosted: req.param('timePosted', '')
-    }
+        name: req.param('name'),
+        category: req.param('category'),
+        description: req.param('description'),
+        price_in_cents: req.param('price_in_cents'),
+        picture : null,
+    };
 
-    // change here
     models.Model.postItem(accountId, item, function(err) {
-        if (err) {
-            console.log(err);
-        }
+        res.send(err ? 400 : 200);
     });
-    res.send(200);
 });
 
 
