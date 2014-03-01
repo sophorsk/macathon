@@ -1,5 +1,5 @@
-define(['CoBoView', 'text!templates/listings.html', 'views/item', 'models/Item'],
-    function(CoBoView, listingTemplate, ItemView, Item) {
+define(['CoBoView', 'text!templates/listings.html', 'views/item'],
+    function(CoBoView, listingTemplate, ItemView) {
 
         var listingsView = CoBoView.extend({
             el: $("content"),
@@ -26,6 +26,7 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item', 'models/Item']
             },
 
             initialize: function() {
+                console.log(this.collection);
                 this.collection.on('reset', this.onItemCollectionReset, this);
             },
 
