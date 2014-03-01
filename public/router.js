@@ -6,7 +6,10 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
 
         routes: {
             "index": "index",
-            "login": "login"
+            "login": "login",
+            "profile": "profile",
+            "listings": "listings",
+            "messages": "messages"
         },
 
         changeView: function(view) {

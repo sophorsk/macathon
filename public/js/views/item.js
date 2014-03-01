@@ -4,7 +4,12 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
             tagName: 'li',
 
             events: {
-                "click .loadMessagePage": "loadMessagePage"
+                "click .loadMessagePage": "loadMessagePage",
+                "hover ": "loadDetails"
+            },
+
+            loadDetails: function() {
+
             },
 
             loadMessagePage: function() {
