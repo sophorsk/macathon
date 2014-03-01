@@ -71,12 +71,16 @@ app.get('/logout', function(req, res) {
  * All APIs for users
  */
 app.get('/accounts/:id', function(req, res) {
-    var accountId = req.sessions.accountId;
+    var accountId = req.session.accountId;
 
     models.Model.findUserById(accountId, function(account) {
         console.log(account);
         res.send(account);
     })
+});
+
+app.get('/accounts/me', function(req, res) {
+
 });
 
 app.post('/accounts/:id/item', function(req, res) {

@@ -16,8 +16,8 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                     function(data) {
                         view.render(data);
                     }).error(function() {
-                        $('#results').text('No items found !');
-                        $('#results').slideDown();
+                        $('.all_items').text('No items found !');
+                        $('.all_items').slideDown();
                     });
                 return false;
             },
