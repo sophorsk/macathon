@@ -66,8 +66,8 @@ app.get('/logout', function(req, res) {
     if (req.session) {
         req.session.auth = null;
         req.session.destroy();
-        res.redirect('/');
     }
+    res.redirect('/');
 });
 
 /***
