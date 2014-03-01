@@ -178,7 +178,7 @@ app.post('/api/post_item', function(req, res) {
 });
 
 /* Get information about the specified item.  */
-app.get('/api/items/:item_id', function(req, res) {
+app.get('/api/item/:item_id', function(req, res) {
     var item_id = req.param('item_id');
     db.findItemById(item_id, function(err, item) {
         if (err) {
