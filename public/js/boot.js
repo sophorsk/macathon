@@ -8,8 +8,8 @@ require.config({
         Underscore: '/js/libs/underscore',
         Backbone: '/js/libs/backbone',
         async : '/js/libs/async',
-        text: '/js/libs/text',
         models: 'models',
+        text: '/js/libs/text',
         templates: '../templates',
         CoBoView: '/js/CoBoView'
     },

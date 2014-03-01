@@ -22,12 +22,9 @@ app.configure(function() {
         secret: "Macathon secret key",
         store: new MemoryStore()
     }));
-
-    //db = require('./server/db')(pg, function(){ });
 });
 
 app.get('/', function(req, res) {
-    console.log("Hey");
     res.render('index.jade');
 });
 
@@ -64,9 +61,10 @@ app.post('/api/login', function(req, res) {
         } else {
             console.log('Logged in account %s successfully!', email);
             req.session.account_id = account.id;
-            res.send(200);
+            //res.send(200);
         }
     });
+    res.send(200);
 
 });
 
@@ -295,8 +293,8 @@ app.post('/api/send_message/:to_account_id', function(req, res) {
     });
 });
 
+    app.listen(8080);
+    console.log("Server listening at localhost:8080");
+
 
 });
-
-app.listen(8080);
-console.log("Server listening at localhost:8080");

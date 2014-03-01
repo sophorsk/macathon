@@ -11,7 +11,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
 
             searchItems: function() {
                 var view = this;
-                $.get('/items/search', {
+                $.get('/api/items', {
                         category: $('select.category option:selected').val(),
                         q: $('input[name=searchString]').val()
                     },
