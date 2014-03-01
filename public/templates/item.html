@@ -1,19 +1,24 @@
 <div class="item_box">
     <div class="image">
-      <img src="data:image/png;base64,<%= picture %>" width=175px height=175px />
+      <% if (picture) { %>
+        <img src="data:image/png;base64,<%= picture %>" width=175px height=175px />
+      <% } else if (description) { %>
+        <%= description %>
+      <% } else { %>
+        <img src="" />
+      <% } %>
     </div>
     <div class="item_details">
-        <div class="profile_section">
-            <img src="">
-            <b> UserName</b>
+        <div class="item_seller">
+            Seller <%= seller %>
         </div>
 
         <div class="item_name">
-            Name: <%= name %> </br>
+            <%= name %>
         </div>
 
-        <div class="price_section loadMessagePage">
-            <button> Price: <%= price_in_cents %></button>
+        <div class="item_price loadMessagePage">
+            <%= "$" + (price_in_cents / 100).toFixed(2) %>
         </div>
     </div>
 </div>
