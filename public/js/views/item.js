@@ -1,17 +1,15 @@
-define(['CoBoView', 'text!templates/item.html'],
-    function(CoBoView, itemTemplate) {
+define(['CoBoView', 'text!templates/item.html', 'views/message'],
+    function(CoBoView, itemTemplate, MessageView) {
         var itemView = CoBoView.extend({
             tagName: 'li',
 
             events: {
-                "click .sendMessage": "sendMessage"
+                "click .loadMessagePage": "loadMessagePage"
             },
 
-            sendMessage: function() {
-                console.log(this.model.toJSON());
-                $.ajax({
-                    url: '/accounts/'
-                })
+            loadMessagePage: function() {
+                this.messageView = new MessageView();
+                this.$el.append(this.messageView.render().el );
             },
 
             render: function() {

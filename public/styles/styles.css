@@ -1,0 +1,5 @@
+.all_items #item_box{
+    width: 300px;
+    height: 300px;
+    float: left;
+}
