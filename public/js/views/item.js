@@ -18,7 +18,19 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
             },
 
             render: function() {
-                this.$el.html(_.template(itemTemplate, this.model.toJSON()));
+                var item = this.model.toJSON();
+                item.seller_name = "Seller " + item.seller;
+                $.ajax({
+                   url : '/api/accounts/' + item.seller,
+                   type : 'GET',
+                   dataType : 'json',
+                   async : false,
+                   success : function(account) {
+                       console.log("Got account: " + account);
+                       item.seller_name = account.first_name + ' ' + account.last_name[0] + '.';
+                   }
+                });
+                this.$el.html(_.template(itemTemplate, item));
                 return this;
             }
         });

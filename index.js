@@ -101,7 +101,7 @@ app.get('/api/accounts/me', function(req, res) {
 
 /* Get information about an account specified by ID.  */
 app.get('/api/accounts/:account_id', function(req, res) {
-    getAccountInfo(req, res, req.param.account_id);
+    getAccountInfo(req, res, req.param('account_id'));
 });
 
 function getItemsForSale(req, res, seller_id) {
