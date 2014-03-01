@@ -2,16 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/layout.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CoBo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CoBoView.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/async.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/backbone.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/boot.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/jquery.query-2.1.7.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/templates/login.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/views/login.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/require.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/text.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/libs/underscore.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/Model.js" afterPath="$PROJECT_DIR$/server/models/Model.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="macathon.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393643494237" ignored="false" />
-    <file path="/index.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393643818334" ignored="false" />
+    <file path="/index.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393649713180" ignored="false" />
+    <file path="/Model.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393649619305" ignored="false" />
+    <file path="/package.json" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393644896832" ignored="false" />
+    <file path="/layout.jade" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393645846439" ignored="false" />
+    <file path="/login.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393648677329" ignored="false" />
+    <file path="/boot.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393648930259" ignored="false" />
+    <file path="/router.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393649293396" ignored="false" />
+    <file path="/CoBoView.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393649366432" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +54,25 @@
       <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="50" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+            <state line="55" column="42" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/views/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="26" selection-start="168" selection-end="168" vertical-scroll-proportion="0.20107238">
               <folding />
             </state>
           </provider>
@@ -43,7 +81,52 @@
       <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="27" selection-start="179" selection-end="179" vertical-scroll-proportion="-4.375">
+            <state line="11" column="30" selection-start="207" selection-end="207" vertical-scroll-proportion="-6.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/models/Model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="4" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoBoView.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/CoBoView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="24" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoBo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/CoBo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="42" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="router.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/router.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="16" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="boot.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/boot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="36" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -53,15 +136,6 @@
         <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state line="12" column="26" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.jade" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="40" selection-start="119" selection-end="119" vertical-scroll-proportion="0.21428572">
               <folding />
             </state>
           </provider>
@@ -86,14 +160,22 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/public/templates/login.html" />
+        <option value="$PROJECT_DIR$/public/boot.js" />
+        <option value="$PROJECT_DIR$/public/CoBo.js" />
+        <option value="$PROJECT_DIR$/public/js/router.js" />
+        <option value="$PROJECT_DIR$/public/router.js" />
+        <option value="$PROJECT_DIR$/public/CoBoView.js" />
+        <option value="$PROJECT_DIR$/server/models/Model.js" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/public/js/views/login.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="244" />
+    <option name="x" value="58" />
     <option name="y" value="22" />
     <option name="width" value="1260" />
     <option name="height" value="760" />
@@ -156,6 +238,100 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="macathon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -169,7 +345,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/templates" />
+      <recent name="$PROJECT_DIR$/public/js/libs" />
       <recent name="$PROJECT_DIR$/views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Application">
@@ -203,13 +384,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="244" y="22" width="1260" height="760" extended-state="0" />
-    <editor active="false" />
+    <frame x="58" y="22" width="1260" height="760" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.100242525" sideWeight="0.6706587" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18350849" sideWeight="0.6706587" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -285,16 +466,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="179" selection-end="179" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="50" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+        <state line="2" column="34" selection-start="59" selection-end="59" vertical-scroll-proportion="0.071428575">
           <folding />
         </state>
       </provider>
@@ -306,9 +480,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+    <entry file="file://$PROJECT_DIR$/public/js/libs/async.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="40" selection-start="119" selection-end="119" vertical-scroll-proportion="0.21428572">
+        <state line="4" column="30" selection-start="174" selection-end="174" vertical-scroll-proportion="0.14285715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/boot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="16" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/CoBoView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="24" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/CoBo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="42" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="30" selection-start="207" selection-end="207" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/Model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="4" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="42" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/views/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="26" selection-start="168" selection-end="168" vertical-scroll-proportion="0.20107238">
           <folding />
         </state>
       </provider>
