@@ -4,7 +4,7 @@ define(['CoBoView', 'text!templates/profile.html'],
             el: $('#content'),
 
             initialize: function() {
-
+                console.log(this.model.toJSON());
             },
 
             render: function() {
