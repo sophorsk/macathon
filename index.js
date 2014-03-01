@@ -227,7 +227,7 @@ app.delete('/api/item/:item_id', function(req, res) {
 
     var item_id = req.param('item_id');
 
-    db.deleteItem(account_id, itemId, function(err) {
+    db.deleteItem(account_id, item_id, function(err) {
         if (err) {
             res.send(500, err);
         } else {
