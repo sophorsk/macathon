@@ -100,8 +100,6 @@ app.post('/accounts/:id/item', function(req, res) {
  * All APIs for items
  */
 app.get('/items/all', function(req, res) {
-    //var accountId = req.session.accountId;
-
     models.Model.loadAllItems(function(allItems) {
         console.log(allItems);
         res.send(allItems);
@@ -128,7 +126,7 @@ app.post('/items/search', function(req, res) {
         return;
     }
 
-    models.Model.searchItem(searchString, function(err, items) {
+    models.Model.searchItems(searchString, category, function(err, items) {
         if (err || items.length == 0) {
             res.send(404);
         } else {
@@ -136,6 +134,12 @@ app.post('/items/search', function(req, res) {
         }
     })
 });
+
+
+/**
+ * APIs for messaging
+ */
+app.get('/accounts')
 
 
 

@@ -8,7 +8,6 @@ define(['CoBoView', 'text!templates/profile.html'],
             },
 
             render: function() {
-
                 this.$el.html(
                     _.template(profileTemplate, this.model.toJSON())
                 );
