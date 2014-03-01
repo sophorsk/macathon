@@ -25,9 +25,9 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
             this.changeView(new LoginView());
         },
 
-
-        profile: function() {
-            var model = new Profile({ });
+        profile: function(id) {
+            var id = "me";
+            var model = new Profile({id: id});
             this.changeView(new ProfileView({ model: model}));
             model.fetch();
         },
