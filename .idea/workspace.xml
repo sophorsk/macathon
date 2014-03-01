@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" name="Default" comment="" />
+    <list default="true" id="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/templates/profile.html" afterPath="$PROJECT_DIR$/public/templates/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/views/profile.js" afterPath="$PROJECT_DIR$/public/js/views/profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/router.js" afterPath="$PROJECT_DIR$/public/js/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="macathon.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393695882680" ignored="false" />
@@ -11,17 +16,17 @@
     <file path="/layout.jade" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393645846439" ignored="false" />
     <file path="/login.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393648677329" ignored="false" />
     <file path="/boot.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393679824723" ignored="false" />
-    <file path="/router.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393697634887" ignored="false" />
+    <file path="/router.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393698777913" ignored="false" />
     <file path="/CoBoView.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393649366432" ignored="false" />
     <file path="/login.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393650283628" ignored="false" />
-    <file path="/profile.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393697313718" ignored="false" />
+    <file path="/profile.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393698638926" ignored="false" />
     <file path="/index.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393696496059" ignored="false" />
     <file path="/item.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393696766194" ignored="false" />
     <file path="/Item.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393653940402" ignored="false" />
     <file path="/ItemCollection.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393654045853" ignored="false" />
     <file path="/item-profile.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393679476586" ignored="false" />
     <file path="/item-profile.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393655762421" ignored="false" />
-    <file path="/profile.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393697293697" ignored="false" />
+    <file path="/profile.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393698685251" ignored="false" />
     <file path="/Account.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393660388631" ignored="false" />
     <file path="/Message.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393660489052" ignored="false" />
     <file path="/MessageCollection.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393660564284" ignored="false" />
@@ -34,8 +39,8 @@
     <file path="/post-item.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393690203928" ignored="false" />
     <file path="/post-item.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393691510685" ignored="false" />
     <file path="/listings.html" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393696407506" ignored="false" />
-    <file path="/listings.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393696258888" ignored="false" />
-    <file path="/Profile.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393697566645" ignored="false" />
+    <file path="/listings.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393698759545" ignored="false" />
+    <file path="/Profile.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393697806963" ignored="false" />
     <file path="/ProfileCollection.js" changelist="8d8c8c2a-5c78-4ecd-84bc-a7fa7d6d0bca" time="1393697069498" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +64,7 @@
       <file leaf-file-name="profile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/views/profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="49" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
+            <state line="24" column="69" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -74,73 +79,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/models/Item.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="router.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="router.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="32" selection-start="862" selection-end="862" vertical-scroll-proportion="0.0">
+            <state line="27" column="40" selection-start="860" selection-end="860" vertical-scroll-proportion="0.4420131">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Message.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/models/Message.js">
+      <file leaf-file-name="listings.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/views/listings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Account.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/models/Account.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Profile.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/models/Profile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="33" selection-start="102" selection-end="102" vertical-scroll-proportion="0.06711409">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileCollection.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/models/ProfileCollection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="23" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/templates/profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="-0.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="21" selection-start="1115" selection-end="1115" vertical-scroll-proportion="-8.125">
+            <state line="46" column="41" selection-start="1652" selection-end="1652" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -170,22 +121,22 @@
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/public/js/views/post-item.js" />
         <option value="$PROJECT_DIR$/public/templates/post-item.html" />
-        <option value="$PROJECT_DIR$/public/js/views/listings.js" />
         <option value="$PROJECT_DIR$/public/templates/listings.html" />
         <option value="$PROJECT_DIR$/public/templates/index.html" />
         <option value="$PROJECT_DIR$/public/styles/styles.css" />
         <option value="$PROJECT_DIR$/public/templates/item.html" />
         <option value="$PROJECT_DIR$/public/js/models/ProfileCollection.js" />
-        <option value="$PROJECT_DIR$/public/templates/profile.html" />
-        <option value="$PROJECT_DIR$/public/js/views/profile.js" />
-        <option value="$PROJECT_DIR$/public/js/router.js" />
         <option value="$PROJECT_DIR$/public/js/models/Profile.js" />
+        <option value="$PROJECT_DIR$/public/js/views/profile.js" />
+        <option value="$PROJECT_DIR$/public/templates/profile.html" />
+        <option value="$PROJECT_DIR$/public/js/views/listings.js" />
+        <option value="$PROJECT_DIR$/public/js/router.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
-    <option name="y" value="64" />
+    <option name="x" value="5" />
+    <option name="y" value="22" />
     <option name="width" value="1260" />
     <option name="height" value="760" />
   </component>
@@ -439,13 +390,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="64" width="1260" height="760" extended-state="0" />
+    <frame x="5" y="22" width="1260" height="760" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1519806" sideWeight="0.74550897" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33953112" sideWeight="0.74550897" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -523,65 +474,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/views/item-profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/views/listings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="42" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/models/ItemCollection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/models/MessageCollection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/styles/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="12" selection-start="1683" selection-end="1683" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/templates/item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="29" selection-start="142" selection-end="142" vertical-scroll-proportion="-3.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="21" selection-start="1115" selection-end="1115" vertical-scroll-proportion="-8.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/models/Account.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/templates/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
@@ -593,14 +488,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/router.js">
+    <entry file="file://$PROJECT_DIR$/public/js/models/ProfileCollection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="32" selection-start="862" selection-end="862" vertical-scroll-proportion="0.0">
+        <state line="2" column="23" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/models/ItemCollection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/views/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="69" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="39" selection-start="43" selection-end="43" vertical-scroll-proportion="0.033632286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/models/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="26" selection-start="129" selection-end="129" vertical-scroll-proportion="0.12765957">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/models/Account.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/models/Item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="32" selection-start="95" selection-end="95" vertical-scroll-proportion="0.06382979">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/views/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="14" selection-start="1051" selection-end="1051" vertical-scroll-proportion="0.9255319">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/listings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -614,23 +572,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/views/profile.js">
+    <entry file="file://$PROJECT_DIR$/public/js/views/listings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="49" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
+        <state line="46" column="41" selection-start="1652" selection-end="1652" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/models/ProfileCollection.js">
+    <entry file="file://$PROJECT_DIR$/public/js/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="23" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/models/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="33" selection-start="102" selection-end="102" vertical-scroll-proportion="0.06711409">
+        <state line="27" column="40" selection-start="860" selection-end="860" vertical-scroll-proportion="0.4420131">
           <folding />
         </state>
       </provider>
