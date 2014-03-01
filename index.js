@@ -29,7 +29,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/account/authenticated', function(req, res) {
-    if ( req.session.loggedIn ) {
+    if (req.session.account_id != undefined) {
         res.send(200);
     } else {
         res.send(401);
@@ -38,11 +38,17 @@ app.get('/api/account/authenticated', function(req, res) {
 
 app.post('/api/login', function(req, res) {
     console.log('login request');
+
     var email = req.param('email');
     var password = req.param('password');
 
-    if ( email == null || email.length < 1 || password == null || password.length < 1 ) {
-        res.send(400);
+    if (email == null || email.length < 1) {
+        res.send(400, "email must be specified!");
+        return;
+    }
+
+    if (password == null || password.length < 1) {
+        res.send(400, "password must be specified!");
         return;
     }
 
@@ -50,14 +56,12 @@ app.post('/api/login', function(req, res) {
 
     db.login(email, password_hash, function(err, account) {
         if (err) {
-            res.send(400);
-            return;
+            res.send(500, err);
+        } else {
+            console.log('Logged in account %s successfully!', email);
+            req.session.account_id = account.id;
+            res.send(200);
         }
-
-        console.log('login was successful');
-        req.session.loggedIn = true;
-        req.session.account_id = account.id;
-        res.send(200);
     });
 
 });
@@ -95,7 +99,7 @@ function getAccountInfo(req, res, account_id) {
 app.get('/api/accounts/me', function(req, res) {
     var account_id = req.session.account_id;
     if (account_id == undefined) {
-        res.send(400);
+        res.send(401, "no account is currently logged in!");
         return;
     }
     getAccountInfo(req, res, account_id);
@@ -103,13 +107,21 @@ app.get('/api/accounts/me', function(req, res) {
 
 /* Get information about an account specified by ID.  */
 app.get('/api/accounts/:account_id', function(req, res) {
-    getAccountInfo(req, res, req.param('account_id'));
-
+    var account_id = req.param('account_id');
+    if (account_id == undefined) {
+        res.send(400, "account_id must be specified!");
+        return;
+    }
+    getAccountInfo(req, res, account_id);
 });
 
 function getItemsForSale(req, res, seller_id) {
     db.findItemsBySeller(seller_id, function(err, result) {
-        res.send(err ? 400 : result);
+        if (err) {
+            res.send(500, err);
+        } else {
+            res.send(result);
+        }
     });
 }
 
@@ -117,7 +129,7 @@ function getItemsForSale(req, res, seller_id) {
 app.get('/api/accounts/me/items', function(req, res) {
     var seller_id = req.session.account_id;
     if (seller_id == undefined) {
-        res.send(400);
+        res.send(401, "no account is currently logged in!");
         return;
     }
     getItemsForSale(req, res, seller_id);
@@ -126,6 +138,10 @@ app.get('/api/accounts/me/items', function(req, res) {
 /* Get the items for sale by the specified account.  */
 app.get('/api/accounts/:account_id/items', function(req, res) {
     var seller_id = req.param('account_id');
+    if (seller_id == undefined) {
+        res.send(400, "account_id must be specified!");
+        return;
+    }
     getItemsForSale(req, res, seller_id);
 });
 
@@ -141,8 +157,8 @@ app.get('/api/items', function(req, res) {
     var search_text = req.param('q');
 
     db.searchItems(search_category, search_text, function(err, items) {
-        if (err || items.length == 0) {
-            res.send(404);
+        if (err) {
+            res.send(500, err);
         } else {
             res.send(items);
         }
@@ -154,7 +170,7 @@ app.post('/api/post_item', function(req, res) {
     var account_id = req.session.account_id;
 
     if (account_id == undefined) {
-        res.send(400);
+        res.send(401, "no account is currently logged in!");
         return;
     }
 
@@ -168,7 +184,7 @@ app.post('/api/post_item', function(req, res) {
 
     db.postItem(account_id, item, function(err) {
         if (err) {
-            res.send(400, err);
+            res.send(500, err);
         } else {
             res.send(200);
         }
@@ -192,7 +208,7 @@ app.get('/api/items/:item_id', function(req, res) {
 app.post('/api/item/:item_id/make_offer', function(req, res) {
     var account_id = req.session.account_id;
     if (account_id == undefined) {
-        res.send(400, "no user is currently logged in!");
+        res.send(401, "no account is currently logged in!");
         return;
     }
 

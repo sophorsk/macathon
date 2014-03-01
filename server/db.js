@@ -199,7 +199,7 @@ exports.findItemsBySeller = function(seller_id, callback)
              [seller_id],
              function(err, result)
     {
-        callback(err, result);
+        callback(err, result ? result.rows : null);
     });
 }
 
