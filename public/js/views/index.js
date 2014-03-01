@@ -6,7 +6,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
             el: $('#content'),
 
             events: {
-                "submit .search_form": "searchItems"
+                "submit form": "searchItems"
             },
 
             searchItems: function() {
@@ -16,6 +16,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                         q: $('input[name=searchString]').val()
                     },
                     function(data) {
+                        console.log(data);
                         view.render(data);
                     }).error(function() {
                         $('.all_items').text('No items found !');

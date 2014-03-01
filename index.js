@@ -60,12 +60,11 @@ app.post('/api/login', function(req, res) {
             res.send(500, err);
         } else {
             console.log('Logged in account %s successfully!', email);
+            req.session.loggedIn = true;
             req.session.account_id = account.id;
-            //res.send(200);
+            res.send(200);
         }
     });
-    res.send(200);
-
 });
 
 app.get('/api/logout', function(req, res) {
@@ -142,9 +141,13 @@ app.get('/api/accounts/:account_id/items', function(req, res) {
 
 /* Search the items by category and search string.  */
 app.get('/api/items', function(req, res) {
-    console.log(req.session.account_id);
+
+    var account_id = req.session.account_id;
+
     var search_category = req.param('category');
     var search_text = req.param('q');
+
+    console.log(search_category);
 
     db.searchItems(search_category, search_text, function(err, items) {
         if (err) {
