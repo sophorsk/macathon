@@ -100,10 +100,14 @@ app.post('/accounts/:id/item', function(req, res) {
  * All APIs for items
  */
 app.get('/items/all', function(req, res) {
-    models.Model.loadAllItems(function(allItems) {
-        console.log(allItems);
-        res.send(allItems);
-    })
+    models.Model.loadAllItems(function(err, allItems) {
+        if (err) {
+            res.send(400);
+        } else {
+            console.log(allItems);
+            res.send(allItems);
+        }
+    });
 });
 
 app.get('/items/:itemId', function(req, res) {
