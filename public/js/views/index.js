@@ -46,7 +46,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                 if (resultList != null) {
                     _.each(resultList, function(itemJson) {
 
-                        // get each contact on resultList
+                        // get each item from resultList
                         var itemModel = new Item(itemJson);
                         var itemHtml = (new ItemView(
                             {model: itemModel }
