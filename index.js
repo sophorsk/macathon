@@ -113,10 +113,9 @@ app.get('/items/all', function(req, res) {
 app.get('/items/:itemId', function(req, res) {
     var accountId = req.session.accountId;
 
-    var itemId = req.param('itemId', null);
-    models.Model.findItemById(itemId, function(item) {
-        console.log(item);
-        res.send(item);
+    var itemId = req.param('itemId');
+    models.Model.findItemById(itemId, function(err, item) {
+        res.send(err ? 400 : item);
     });
 });
 
