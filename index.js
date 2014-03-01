@@ -29,7 +29,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/account/authenticated', function(req, res) {
-    console.log(req.session.account_id);
     if (req.session.account_id != undefined) {
         res.send(200);
     } else {
