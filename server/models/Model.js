@@ -116,7 +116,17 @@ exports.login = function(email_address, password_sha1, callback)
         if (!err && result.rows.length == 0) {
             err = "email address and/or password not found";
         }
-        callback(err, result.rows[0]);
+        callback(err, (result ? result.rows[0] : null));
+    });
+}
+
+exports.findAccountById = function(account_id, callback)
+{
+    runQuery("SELECT FROM account WHERE id = $1;\n",
+             [account_id],
+             function(err, result)
+    {
+        callback(err, (result ? result.rows[0] : null));
     });
 }
 
@@ -138,18 +148,36 @@ exports.searchItems = function(search_category, search_text, callback)
     queryText = "SELECT * FROM ITEM WHERE ";
     values = [];
 
-    if (search_category != "all" && search_category != null) {
+    if (search_category && search_category != "all") {
         values.push(search_category);
         queryText += "category = $" + values.length + " AND ";
     }
 
-    values.push("%" + search_text + "%");
-    queryText += "name ILIKE $" + values.length;
+    if (search_text) {
+        values.push("%" + search_text + "%");
+        queryText += "name ILIKE $" + values.length;
+    } else {
+        queryText += "1 = 1";
+    }
 
     queryText += ";\n";
 
     runQuery(queryText, values, function(err, result) {
-        callback(err, (result == null ? null : result.rows));
+        callback(err, (result ? result.rows : null));
+    });
+}
+
+exports.loadAllItems = function(callback) {
+    exports.searchItems(null, null, callback);
+}
+
+exports.findItemById = function(item_id, callback)
+{
+    runQuery("SELECT FROM item WHERE id = $1;\n",
+             [item_id],
+             function(err, result)
+    {
+        callback(err, (result ? result.rows[0] : null));
     });
 }
 
@@ -184,7 +212,7 @@ exports.getBuyerOffers = function(buyer_account_id, callback)
              [buyer_account_id],
              function(err, result)
     {
-        callback(err, (result == null ? null : result.rows));
+        callback(err, (result ? result.rows : null));
     });
 }
 
@@ -195,7 +223,7 @@ exports.getSellerOffers = function(seller_account_id, callback)
              [seller_account_id],
              function(err, result)
     {
-        callback(err, (result == null ? null : result.rows));
+        callback(err, (result ? result.rows : null));
     });
 }
 
@@ -218,7 +246,7 @@ exports.getIncomingMessages = function(account_id, callback)
              [account_id],
              function(err, result)
     {
-        callback(err, (result == null ? null : result.rows));
+        callback(err, (result ? result.rows : null));
     });
 }
 
