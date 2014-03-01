@@ -9,7 +9,7 @@ define(['CoBoView', 'text!templates/login.html'], function(CoBoView, loginTempla
         },
 
         login: function() {
-            $.post('/login', {
+            $.post('/api/login', {
                 email: $('input[name=email]').val(),
                 password: $('input[name=password]').val()
             }, function(data) {
