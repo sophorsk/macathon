@@ -7,7 +7,8 @@ var pg;
  * if they fail.
  *
  * TODO: this isn't actually synchronous yet... */
-function runSyncSQLOrDie(sql) {
+function runSyncSQLOrDie(sql)
+{
     pg.connect(dbConnectionString, function(err, client, done) {
         if (err) {
             console.log("ERROR: Can't connect to database " +
@@ -29,7 +30,8 @@ function runSyncSQLOrDie(sql) {
 /* Asynchronously runs the specified parameterized SQL query.
  * Calls the callback(err, result) when query finished or error occurred.
  */
-function runQuery(queryText, values, callback) {
+function runQuery(queryText, values, callback)
+{
     pg.connect(dbConnectionString, function(err, client, done) {
         if (err) {
             console.log("WARNING: Can't connect to database " +
@@ -51,8 +53,8 @@ function runQuery(queryText, values, callback) {
     });
 }
 
-exports = module.exports = function(_pg) {
-
+exports = module.exports = function(_pg)
+{
     pg = _pg;
 
     sql = "";
@@ -74,11 +76,11 @@ exports = module.exports = function(_pg) {
     sql += "CREATE TABLE IF NOT EXISTS message\n"                    +
            "(\n"                                                     +
            "    id                SERIAL PRIMARY KEY,\n"             +
-           "    time_sent         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
            "    text              VARCHAR(255) NOT NULL,\n"          +
-           "    notification_sent BOOLEAN NOT NULL,\n"               +
+           "    from_account      INTEGER REFERENCES account(id),\n"  +
            "    to_account        INTEGER REFERENCES account(id),\n" +
-           "    from_account      INTEGER REFERENCES account(id)\n" +
+           "    time_sent         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
+           "    notification_sent BOOLEAN NOT NULL\n"               +
            ");\n";
 
     sql += "CREATE TABLE IF NOT EXISTS item\n"                       +
@@ -96,15 +98,16 @@ exports = module.exports = function(_pg) {
     sql += "CREATE TABLE IF NOT EXISTS offer\n"                      +
            "(\n"                                                     +
            "    id                SERIAL PRIMARY KEY,\n"             +
-           "    price_in_cents    INTEGER NOT NULL,\n"               +
-           "    item_id           INTEGER REFERENCES item(id),\n"    +
-           "    account_id        INTEGER REFERENCES account(id)\n"  +
+           "    item              INTEGER REFERENCES item(id),\n"    +
+           "    account           INTEGER REFERENCES account(id),\n" +
+           "    price_in_cents    INTEGER NOT NULL\n"               +
            ");\n";
 
     runSyncSQLOrDie(sql);
 }
 
-exports.login = function(email_address, password_sha1, callback) {
+exports.login = function(email_address, password_sha1, callback)
+{
     runQuery("SELECT FROM account WHERE email_address = $1 " +
              "AND password_sha1 = $2;\n",
              [email_address, password_sha1],
@@ -113,7 +116,7 @@ exports.login = function(email_address, password_sha1, callback) {
         if (!err && result.rows.length == 0) {
             err = "email address and/or password not found";
         }
-        callback(err);
+        callback(err, result.rows[0]);
     });
 }
 
@@ -130,40 +133,70 @@ exports.register = function(email_address, password_sha1,
     });
 }
 
-exports.postItem = function(accountID, item, callback) {
-    runQuery("INSERT INTO item (name, category, seller, " +
-                               "price_in_cents, time_posted, " +
-                               "description, picture) " +
-             "VALUES ($1, $2, $3, $4, $5, $6, $7);\n",
-             [item.name, item.category,
-              accountID, item.price_in_cents,
-              item.time_posted, item.description, item.picture],
-             function(err, result)
-    {
-        callback(err);
-    });
-}
-
-exports.deleteItem = function(accountID, itemID, callback) {
-    runQuery("DELETE FROM ITEM WHERE id = $1;\n",
-             [itemID],
-             function(err, result)
-    {
-        callback(err);
-    });
-}
-
-exports.searchItems = function(searchCategory, searchText, callback) {
+exports.searchItems = function(search_category, search_text, callback)
+{
     queryText = "SELECT * FROM ITEM WHERE ";
     values = [];
-    if (searchCategory != "all") {
-        values.push(searchCategory);
+
+    if (search_category != "all" && search_category != null) {
+        values.push(search_category);
         queryText += "category = $" + values.length + " AND ";
     }
-    values.push("%" + searchText + "%");
+
+    values.push("%" + search_text + "%");
     queryText += "name ILIKE $" + values.length;
+
     queryText += ";\n";
+
     runQuery(queryText, values, function(err, result) {
         callback(err, (result == null ? null : result.rows));
+    });
+}
+
+exports.postItem = function(account_id, item, callback)
+{
+    runQuery("INSERT INTO item (name, category, seller, " +
+                               "price_in_cents, description, picture) " +
+             "VALUES ($1, $2, $3, $4, $5, $6);\n",
+             [item.name, item.category,
+              account_id, item.price_in_cents,
+              item.description, item.picture],
+             function(err, result)
+    {
+        callback(err);
+    });
+}
+
+exports.makeOffer = function(item_id, account_id, price_in_cents, callback)
+{
+    runQuery("INSERT INTO offer (item, account, price_in_cents) " +
+             "VALUES ($1, $2, $3);\n",
+             [item_id, account_id, price_in_cents],
+             function(err, result)
+    {
+        callback(err);
+    });
+}
+
+exports.sendMessage = function(message_text, from_account_id, to_account_id,
+                               callback)
+{
+    runQuery("INSERT INTO message (text, from_account, to_account, " +
+                                  "notification_sent) " +
+             "VALUES ($1, $2, $3, $4);\n",
+             [message_text, from_account_id, to_account_id, false],
+             function(err, result)
+    {
+        callback(err);
+    });
+}
+
+exports.deleteItem = function(account_id, item_id, callback)
+{
+    runQuery("DELETE FROM item WHERE id = $1;\n",
+             [item_id],
+             function(err, result)
+    {
+        callback(err);
     });
 }
