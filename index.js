@@ -1,17 +1,12 @@
 var express = require('express');
 var app = express();
 var MemoryStore = require('connect').session.MemoryStore;
-
-
-var pg = require('pg').native
-    , connectionString = "postgres://localhost:5432/";
-
+var pg = require('pg').native;
 
 // import the models
 var models = {
-    Model: require('./models/Model')(pg)
+    Model: require('./server/models/Model')(pg)
 };
-
 
 app.configure(function() {
     app.set('view engine', 'jade');
@@ -19,14 +14,7 @@ app.configure(function() {
     app.use(express.limit('1mb'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    app.use(express.session({
-        secret: "PartyFinder secret key",
-        store: new MemoryStore()
-    }));
 
-    // make a connection to the database
-    var client = new pg.Client(connectionString);
-    client.connect();
 });
 
 app.get('/', function(req, res) {
@@ -59,7 +47,7 @@ app.post('/login', function(req, res) {
 
         console.log('login was successful');
         req.session.loggedIn = true;
-        req.session.accountId = account.;
+        req.session.accountId = account;
         res.send(200);
     });
 
