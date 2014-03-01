@@ -11,8 +11,10 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
 
             searchItems: function() {
                 var view = this;
-                $.post('/items/search',
-                    this.$('form').serialize(),
+                $.get('/items/search', {
+                        category: $('select.category option:selected').val(),
+                        q: $('input[name=searchString]').val()
+                    },
                     function(data) {
                         view.render(data);
                     }).error(function() {
