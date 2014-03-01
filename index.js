@@ -38,8 +38,6 @@ app.get('/api/account/authenticated', function(req, res) {
 })
 
 app.post('/api/login', function(req, res) {
-    var accountId = req.session.account_id;
-
     var email = req.param('email');
     var password = req.param('password');
 
@@ -60,7 +58,6 @@ app.post('/api/login', function(req, res) {
             res.send(500, err);
         } else {
             console.log('Logged in account %s successfully!', email);
-            req.session.loggedIn = true;
             req.session.account_id = account.id;
             res.send(200);
         }
