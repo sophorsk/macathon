@@ -1,5 +1,5 @@
-define(["views/index", "views/profile", "views/login", "models/Item", "models/ItemCollection"],
-    function(IndexView, ProfileView, LoginView, Item, ItemCollection) {
+define(["views/index", "views/profile", "views/login", "models/Item", "models/ItemCollection", "views/listings"],
+    function(IndexView, ProfileView, LoginView, Item, ItemCollection, ListingsView) {
 
         var ApplicationRouter = Backbone.Router.extend({
 
@@ -35,9 +35,17 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
             itemCollection.fetch();
         },
 
-        profile: function(id) {
-            var model = new Account({id: id});
+        listings: function() {
+            var sellingCollection = new ItemCollection();
+            sellingCollection.url = "/api/accounts/me/items";
 
+            //var cheapCollection = new ItemCollection();
+            //cheapCollection.url = ""
+
+            this.changeView(new ListingsView({
+                collection: sellingCollection
+            }));
+            sellingCollection.fetch();
         },
 
         item: function(itemId) {
