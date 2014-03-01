@@ -19,16 +19,20 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({
-        secret: " ",
+        secret: "Macathon secret key",
         store: new MemoryStore()
     }));
+
+    //db = require('./server/db')(pg, function(){ });
 });
 
 app.get('/', function(req, res) {
+    console.log("Hey");
     res.render('index.jade');
 });
 
 app.get('/api/account/authenticated', function(req, res) {
+    console.log(req.session.account_id);
     if (req.session.account_id != undefined) {
         res.send(200);
     } else {
@@ -140,6 +144,7 @@ app.get('/api/accounts/:account_id/items', function(req, res) {
 
 /* Search the items by category and search string.  */
 app.get('/api/items', function(req, res) {
+    console.log(req.session.account_id);
     var search_category = req.param('category');
     var search_text = req.param('q');
 
@@ -165,7 +170,7 @@ app.post('/api/post_item', function(req, res) {
         name: req.param('name'),
         category: req.param('category'),
         description: req.param('description'),
-        price_in_cents: req.param('price_in_cents'),
+        price_in_cents: req.param('price_in_cents')
     };
 
     db.postItem(account_id, item, function(err) {
@@ -291,7 +296,7 @@ app.post('/api/send_message/:to_account_id', function(req, res) {
 });
 
 
-app.listen(8080);
-console.log("Server listening at localhost:8080")
-
 });
+
+app.listen(8080);
+console.log("Server listening at localhost:8080");

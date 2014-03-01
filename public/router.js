@@ -1,6 +1,7 @@
 define(["views/index", "views/profile", "views/login", "models/Item", "models/ItemCollection"],
     function(IndexView, ProfileView, LoginView, Item, ItemCollection) {
-    var ApplicationRouter = Backbone.Router.extend({
+
+        var ApplicationRouter = Backbone.Router.extend({
 
         currentView: null,
 

@@ -9,6 +9,7 @@ require.config({
         Backbone: '/js/libs/backbone',
         async : '/js/libs/async',
         text: '/js/libs/text',
+        models: 'models',
         templates: '../templates',
         CoBoView: '/js/CoBoView'
     },
