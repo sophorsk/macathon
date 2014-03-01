@@ -108,7 +108,7 @@ exports = module.exports = function(_pg)
 
 exports.login = function(email_address, password_sha1, callback)
 {
-    runQuery("SELECT FROM account WHERE email_address = $1 " +
+    runQuery("SELECT * FROM account WHERE email_address = $1 " +
              "AND password_sha1 = $2;\n",
              [email_address, password_sha1],
              function(err, result)
@@ -122,7 +122,7 @@ exports.login = function(email_address, password_sha1, callback)
 
 exports.findAccountById = function(account_id, callback)
 {
-    runQuery("SELECT FROM account WHERE id = $1;\n",
+    runQuery("SELECT * FROM account WHERE id = $1;\n",
              [account_id],
              function(err, result)
     {
@@ -145,7 +145,7 @@ exports.register = function(email_address, password_sha1,
 
 exports.searchItems = function(search_category, search_text, callback)
 {
-    queryText = "SELECT * FROM ITEM WHERE ";
+    queryText = "SELECT * FROM item WHERE ";
     values = [];
 
     if (search_category && search_category != "all") {
@@ -173,7 +173,7 @@ exports.loadAllItems = function(callback) {
 
 exports.findItemById = function(item_id, callback)
 {
-    runQuery("SELECT FROM item WHERE id = $1;\n",
+    runQuery("SELECT * FROM item WHERE id = $1;\n",
              [item_id],
              function(err, result)
     {
