@@ -284,7 +284,7 @@ exports.deleteItem = function(account_id, item_id, callback)
 
 storeTestData = function(callback) {
     var email_address = "test@example.edu";
-    var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
+    var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // "password"
     exports.register(email_address, password_sha1, "Joe", "Example", function(err) {
     exports.login(email_address, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Essentials Watch",
