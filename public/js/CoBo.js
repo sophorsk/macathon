@@ -7,7 +7,7 @@ define(['router'], function(router) {
     };
 
     var checkLogin = function(callback) {
-        $.ajax("/account/authenticated", {
+        $.ajax("/api/account/authenticated", {
             method: "GET",
             success: function() {
                 return callback(true);
