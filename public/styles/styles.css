@@ -17,11 +17,12 @@ div .item_box{
     float: left;
 }
 
+/*
 div .item_box:hover {
     opacity: 1;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-}
+}*/
 
 div .message_box {
     width: 300px;
@@ -32,4 +33,71 @@ div .message_box {
 /**** remove bullet from li ******/
 li {
     list-style-type: none;
+}
+
+.second_wrapper .logo{
+    width: 250px;
+    height: 100px;
+    background-image: url("../images/logo.png");
+    float: left;
+}
+
+.second_wrapper #search_form{
+    width: 250px;
+    height: 100px;
+    float: left;
+}
+
+.second_wrapper #profile{
+    width: 250px;
+    height: 100px;
+    float: left;
+}
+
+.menu * {
+    margin: 0;
+    padding: 20px 0px 0px 20px;
+}
+
+.menu nav {
+    margin: 30px;
+}
+
+.menu ul {
+    overflow: auto;
+    list-style-type: none;
+}
+
+.menu li {
+    height: 25px;
+    float: left;
+    margin-right: 0px;
+    border-right: 1px solid #aaa;
+    padding: 0 20px;
+}
+
+.menu li:last-child {
+    border-right: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ccc;
+    font: 12px/1 Helvetica, Verdana, sans-serif;
+    text-transform: uppercase;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.menu li a:hover {
+    color: #666;
+}
+
+.menu li.active a {
+    font-weight: bold;
+    color: #333;
 }

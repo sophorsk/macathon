@@ -79,7 +79,6 @@ app.get('/api/logout', function(req, res) {
 /***
  * All APIs for users
  */
-
 function getAccountInfo(req, res, account_id) {
     db.findAccountById(account_id, function(err, account) {
         if (err) {
