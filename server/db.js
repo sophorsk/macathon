@@ -2,6 +2,7 @@ var assert = require("assert");
 
 var dbConnectionString = "postgres://macathon:12345@localhost:5432/macathon";
 var pg;
+var fs = require("fs");
 
 /* Asynchronously runs the specified SQL query.
  * Usage:
@@ -73,7 +74,7 @@ exports = module.exports = function(_pg, callback)
            "    last_name         VARCHAR(64) NOT NULL,\n"           +
            "    time_created      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n"  +
            "    pending_key       CHAR(40),\n"                       +
-           "    profile_picture   BYTEA\n"                           +
+           "    profile_picture   VARCHAR(200000)\n"                 +
            ");\n";
 
     sql += "CREATE TABLE IF NOT EXISTS message\n"                    +
@@ -95,7 +96,7 @@ exports = module.exports = function(_pg, callback)
            "    price_in_cents    INTEGER NOT NULL,\n"               +
            "    time_posted       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
            "    description       VARCHAR(2000),\n"                  +
-           "    picture           BYTEA\n"                           +
+           "    picture           VARCHAR(200000)\n"                 +
            ");\n";
 
     sql += "CREATE TABLE IF NOT EXISTS offer\n"                      +
@@ -293,9 +294,11 @@ storeTestData = function(callback) {
     exports.postItem(account.id, { name : "Entrepreneurship Textbook",
                                    category : "Textbooks",
                                    price_in_cents : 9500}, function(err) {
+    var green_chair = fs.readFileSync("server/green_chair.png").toString("base64");
     exports.postItem(account.id, { name : "Green chair",
                                    category : "Furniture",
-                                   price_in_cents : 1500}, function(err) {
+                                   price_in_cents : 1500,
+                                   picture: green_chair}, function(err) {
     exports.postItem(account.id, { name : "Backpack",
                                    category : "Backpacking",
                                    price_in_cents : 1000}, function(err) {
