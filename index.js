@@ -4,8 +4,9 @@ var MemoryStore = require('connect').session.MemoryStore;
 var pg = require('pg').native;
 var sha1 = require('sha1');
 
-// import the models
-var db = require('./server/db')(pg);
+var db;
+
+db = require('./server/db')(pg, function(){
 
 app.configure(function() {
     app.set('view engine', 'jade');
@@ -176,3 +177,5 @@ app.post('/sendmsg/:id', function(req, res) {
 
 app.listen(8080);
 console.log("Application is at localhost:8080")
+
+});

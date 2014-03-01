@@ -3,35 +3,28 @@ var assert = require("assert");
 var dbConnectionString = "postgres://macathon:12345@localhost:5432/macathon";
 var pg;
 
-/* Synchronously runs the specified SQL statement(s), and aborts the application
- * if they fail.
+/* Asynchronously runs the specified SQL query.
+ * Usage:
  *
- * TODO: this isn't actually synchronous yet... */
-function runSyncSQLOrDie(sql)
-{
-    pg.connect(dbConnectionString, function(err, client, done) {
-        if (err) {
-            console.log("ERROR: Can't connect to database " +
-                        dbConnectionString + " (" + err + ")!");
-            process.exit(1);
-        }
-        console.log("Connected to database " + dbConnectionString);
-        console.log("Running SQL:\n" + sql);
-        client.query(sql, function(err, result) {
-            if (err) {
-                console.log("ERROR: SQL query failed (" + err + ")!");
-                process.exit(1);
-            }
-            done();
-        });
-    });
-}
-
-/* Asynchronously runs the specified parameterized SQL query.
+ * runQuery(queryText, callback);
+ * runQuery(queryText, values, callback);  [ Parameterized query ]
+ *
  * Calls the callback(err, result) when query finished or error occurred.
  */
-function runQuery(queryText, values, callback)
+function runQuery()
 {
+    var queryText;
+    var values;
+    var callback;
+    if (arguments.length == 2) {
+        queryText = arguments[0];
+        values = null;
+        callback = arguments[1];
+    } else {
+        queryText = arguments[0];
+        values = arguments[1];
+        callback = arguments[2];
+    }
     pg.connect(dbConnectionString, function(err, client, done) {
         if (err) {
             console.log("WARNING: Can't connect to database " +
@@ -41,19 +34,29 @@ function runQuery(queryText, values, callback)
         } else {
             console.log("Connected to database " + dbConnectionString);
             console.log("Running SQL:\n" + queryText);
-            console.log("values: " + values);
-            client.query(queryText, values, function(err, result) {
-                if (err) {
-                    console.log("WARNING: SQL query failed (" + err + ")!");
-                }
-                callback(err, result);
-                done();
-            });
+            if (values) {
+                console.log("values: " + values);
+                client.query(queryText, values, function(err, result) {
+                    if (err) {
+                        console.log("WARNING: SQL query failed (" + err + ")!");
+                    }
+                    callback(err, result);
+                    done();
+                });
+            } else {
+                client.query(queryText, function(err, result) {
+                    if (err) {
+                        console.log("WARNING: SQL query failed (" + err + ")!");
+                    }
+                    callback(err, result);
+                    done();
+                });
+            }
         }
     });
 }
 
-exports = module.exports = function(_pg)
+exports = module.exports = function(_pg, callback)
 {
     pg = _pg;
 
@@ -103,10 +106,9 @@ exports = module.exports = function(_pg)
            "    price_in_cents    INTEGER NOT NULL\n"               +
            ");\n";
 
-    runSyncSQLOrDie(sql);
-
-    storeTestData();
-
+    runQuery(sql, function(err, result) {
+        storeTestData(callback);
+    });
     return module.exports;
 }
 
@@ -265,7 +267,7 @@ exports.deleteItem = function(account_id, item_id, callback)
     });
 }
 
-storeTestData = function() {
+storeTestData = function(callback) {
     var email_address = "test@example.edu";
     var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
     exports.register(email_address, password_sha1, "Joe", "Example", function(err) {
@@ -293,5 +295,6 @@ storeTestData = function() {
                                                  "Section 103 Row 6 Seat 19, 20 and two " +
                                                  "FLOOR CENTER SEATS.",
                                    price_in_cents : 6000}, function(err) {
+        callback();
     })})})})})})});});
 }
