@@ -104,7 +104,12 @@ exports = module.exports = function(_pg)
            ");\n";
 
     runSyncSQLOrDie(sql);
+
+    storeTestData();
+
+    return module.exports;
 }
+
 
 exports.login = function(email_address, password_sha1, callback)
 {
@@ -167,17 +172,17 @@ exports.searchItems = function(search_category, search_text, callback)
     });
 }
 
-exports.loadAllItems = function(callback) {
-    exports.searchItems(null, null, callback);
-}
-
 exports.findItemById = function(item_id, callback)
 {
     runQuery("SELECT * FROM item WHERE id = $1;\n",
              [item_id],
              function(err, result)
     {
-        callback(err, (result ? result.rows[0] : null));
+        if (!err && result.rows.length == 0) {
+            err = "item not found";
+            result = null;
+        }
+        callback(err, result);
     });
 }
 
@@ -258,4 +263,35 @@ exports.deleteItem = function(account_id, item_id, callback)
     {
         callback(err);
     });
+}
+
+storeTestData = function() {
+    var email_address = "test@example.edu";
+    var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
+    exports.register(email_address, password_sha1, "Joe", "Example", function(err) {
+    exports.login(email_address, password_sha1, function(err, account) {
+    exports.postItem(account.id, { name : "Essentials Watch",
+                                   category : "Watches",
+                                   price_in_cents : 4000}, function(err) {
+    exports.postItem(account.id, { name : "Entrepreneurship Textbook",
+                                   category : "Textbooks",
+                                   price_in_cents : 9500}, function(err) {
+    exports.postItem(account.id, { name : "Green chair",
+                                   category : "Furniture",
+                                   price_in_cents : 1500}, function(err) {
+    exports.postItem(account.id, { name : "Backpack",
+                                   category : "Backpacking",
+                                   price_in_cents : 1000}, function(err) {
+    exports.postItem(account.id, { name : "Basic Desk",
+                                   category : "Furniture",
+                                   price_in_cents : 9900}, function(err) {
+    exports.postItem(account.id, { name : "Demi Lovato Tickets",
+                                   category : "Tickets",
+                                   description : "I have two tickets to Demi Lovato's " +
+                                                 "Neon Lights Tour.  I am no longer able " +
+                                                 "to go.  The seats are really good!\n\n" +
+                                                 "Section 103 Row 6 Seat 19, 20 and two " +
+                                                 "FLOOR CENTER SEATS.",
+                                   price_in_cents : 6000}, function(err) {
+    })})})})})})});});
 }
