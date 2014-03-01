@@ -42,12 +42,12 @@ app.post('/api/login', function(req, res) {
     var email = req.param('email');
     var password = req.param('password');
 
-    if (email == null || email.length < 1) {
+    if (!email) {
         res.send(400, "email must be specified!");
         return;
     }
 
-    if (password == null || password.length < 1) {
+    if (!password) {
         res.send(400, "password must be specified!");
         return;
     }
@@ -68,8 +68,8 @@ app.post('/api/login', function(req, res) {
 
 app.get('/api/logout', function(req, res) {
     if (req.session) {
-        req.session.auth = null;
         req.session.destroy();
+        req.session = undefined;
     }
     res.redirect('/');
 });
@@ -82,10 +82,8 @@ app.get('/api/logout', function(req, res) {
 function getAccountInfo(req, res, account_id) {
     db.findAccountById(account_id, function(err, account) {
         if (err) {
-            res.send(404);
+            res.send(404, err);
         } else {
-            console.log(account);
-
             account.password_sha1 = undefined;
             account.pending_key = undefined;
             account.email_address = undefined;
@@ -107,12 +105,7 @@ app.get('/api/accounts/me', function(req, res) {
 
 /* Get information about an account specified by ID.  */
 app.get('/api/accounts/:account_id', function(req, res) {
-    var account_id = req.param('account_id');
-    if (account_id == undefined) {
-        res.send(400, "account_id must be specified!");
-        return;
-    }
-    getAccountInfo(req, res, account_id);
+    getAccountInfo(req, res, req.param.account_id);
 });
 
 function getItemsForSale(req, res, seller_id) {
@@ -137,12 +130,7 @@ app.get('/api/accounts/me/items', function(req, res) {
 
 /* Get the items for sale by the specified account.  */
 app.get('/api/accounts/:account_id/items', function(req, res) {
-    var seller_id = req.param('account_id');
-    if (seller_id == undefined) {
-        res.send(400, "account_id must be specified!");
-        return;
-    }
-    getItemsForSale(req, res, seller_id);
+    getItemsForSale(req, res, req.param.account_id);
 });
 
 
@@ -152,7 +140,6 @@ app.get('/api/accounts/:account_id/items', function(req, res) {
 
 /* Search the items by category and search string.  */
 app.get('/api/items', function(req, res) {
-
     var search_category = req.param('category');
     var search_text = req.param('q');
 
@@ -179,7 +166,6 @@ app.post('/api/post_item', function(req, res) {
         category: req.param('category'),
         description: req.param('description'),
         price_in_cents: req.param('price_in_cents'),
-        picture : null,
     };
 
     db.postItem(account_id, item, function(err) {
@@ -222,47 +208,90 @@ app.post('/api/item/:item_id/make_offer', function(req, res) {
 
     db.makeOffer(item_id, account_id, price_in_cents, function(err) {
         if (err) {
-            res.send(400, err);
+            res.send(500, err);
         } else {
             res.send(200);
         }
     });
 });
 
-app.delete('/api/items', function(req, res) {
+/* Delete the specified item, which must be owned by the currently logged in
+ * account.  */
+app.delete('/api/item/:item_id', function(req, res) {
     var account_id = req.session.account_id;
-    var itemId = req.param('itemId');
+
+    if (account_id == undefined) {
+        res.send(401, "no account is currently logged in!");
+        return;
+    }
+
+    var item_id = req.param('item_id');
 
     db.deleteItem(account_id, itemId, function(err) {
-        res.send(err ? 400 : 200);
+        if (err) {
+            res.send(500, err);
+        } else {
+            res.send(200);
+        }
     });
 });
 
 /**
  * APIs for messaging
  */
-// load all messages for a user
+
+/* Get all messages that have been sent to the currently logged in account.  */
 app.get('/api/messages', function(req, res) {
     var account_id = req.session.account_id;
 
+    if (account_id == undefined) {
+        res.send(401, "no account is currently logged in!");
+        return;
+    }
+
     db.getIncomingMessages(account_id, function(err, messages) {
-        res.send(err ? 404 : messages);
+        if (err) {
+            res.send(500, err);
+        } else {
+            res.send(messages);
+        }
     });
 });
 
+/* Send a message from the currently logged in account to the specified account.
+ */
 app.post('/api/send_message/:to_account_id', function(req, res) {
+    var from_account_id = req.session.account_id;
+
+    if (from_account_id == undefined) {
+        res.send(401, "no account is currently logged in!");
+        return;
+    }
 
     var message_text = req.param('message_text');
-    var from_account_id = req.session.account_id;
     var to_account_id = req.param('to_account_id');
 
+    if (!message_text || to_account_id == undefined) {
+        res.send(400, "message_text and to_account_id must be specified!");
+        return;
+    }
+
+    if (message_text.length > 2000) {
+        res.send(400, "message length is limited to 2000 characters!");
+        return;
+    }
+
     db.sendMessage(message_text, from_account_id, to_account_id, function(err) {
-        res.send(err ? 400 : 200);
+        if (err) {
+            res.send(500, err);
+        } else {
+            res.send(200);
+        }
     });
 });
 
 
 app.listen(8080);
-console.log("Application is at localhost:8080")
+console.log("Server listening at localhost:8080")
 
 });

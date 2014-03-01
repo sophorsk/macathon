@@ -79,8 +79,8 @@ exports = module.exports = function(_pg, callback)
     sql += "CREATE TABLE IF NOT EXISTS message\n"                    +
            "(\n"                                                     +
            "    id                SERIAL PRIMARY KEY,\n"             +
-           "    text              VARCHAR(255) NOT NULL,\n"          +
-           "    from_account      INTEGER REFERENCES account(id),\n"  +
+           "    text              VARCHAR(2000) NOT NULL,\n"         +
+           "    from_account      INTEGER REFERENCES account(id),\n" +
            "    to_account        INTEGER REFERENCES account(id),\n" +
            "    time_sent         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
            "    notification_sent BOOLEAN NOT NULL\n"               +
@@ -189,7 +189,7 @@ exports.findItemById = function(item_id, callback)
             err = "item not found";
             result = null;
         }
-        callback(err, result.rows[0]);
+        callback(err, (result ? result.rows[0] : null));
     });
 }
 
