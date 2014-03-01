@@ -11,6 +11,7 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
 
             postItem: function() {
                 var $messageArea = this.$('.messageArea');
+
                 $.post('/api/post_item', {
                     name: $('input[name=name]').val(),
                     category: $('select.category option:selected').val(),
