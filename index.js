@@ -179,14 +179,29 @@ app.get('/items/:item_id', function(req, res) {
     });
 });
 
-app.post('/items', function(req, res) {
+/* Make an offer on the specified item using the currently logged in account.
+ */
+app.post('/item/:item_id/make_offer', function(req, res) {
     var account_id = req.session.account_id;
+    if (account_id == undefined) {
+        res.send(400, "no user is currently logged in!");
+        return;
+    }
 
-    var itemId = req.param('itemId');
+    var item_id = req.param('item_id');
     var price_in_cents = req.param('price_in_cents');
 
-    db.makeOffer(itemId, account_id, price_in_cents, function(err) {
-        res.send(err ? 400 : 200);
+    if (price_in_cents == undefined) {
+        res.send(400, "price_in_cents must be specified!");
+        return;
+    }
+
+    db.makeOffer(item_id, account_id, price_in_cents, function(err) {
+        if (err) {
+            res.send(400, err);
+        } else {
+            res.send(200);
+        }
     });
 });
 
