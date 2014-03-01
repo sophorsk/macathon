@@ -191,11 +191,7 @@ app.post('/accounts/:id/messages', function(req, res) {
             console.log(err);
         }
     });
-    res.send(200)
-});
-
-app.delete('/accounts/:id/messages', function(req, res) {
-
+    res.send(200);
 });
 
 

@@ -1,9 +1,26 @@
-define(["CoBoView", 'text!templates/index.html', "views/item"],
-    function(CoBoView, indexTemplate, ItemView) {
+define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
+    function(CoBoView, indexTemplate, ItemView, Item) {
 
         var indexView = CoBoView.extend({
 
             el: $('#content'),
+
+            events: {
+                "submit .search_form": "searchItems"
+            },
+
+            searchItems: function() {
+                var view = this;
+                $.post('/items/search',
+                    this.$('form').serialize(),
+                    function(data) {
+                        view.render(data);
+                    }).error(function() {
+                        $('#results').text('No items found !');
+                        $('#results').slideDown();
+                    });
+                return false;
+            },
 
             initialize: function() {
                 this.collection.on('reset', this.onItemCollectionReset, this);
@@ -23,8 +40,21 @@ define(["CoBoView", 'text!templates/index.html', "views/item"],
                 $(itemHtml).prependTo('.all_items').hide().fadeIn('slow');
             },
 
-            render: function() {
+            render: function(resultList) {
                 this.$el.html(indexTemplate);
+
+                if (resultList != null) {
+                    _.each(resultList, function(itemJson) {
+
+                        // get each contact on resultList
+                        var itemModel = new Item(itemJson);
+                        var itemHtml = (new ItemView(
+                            {model: itemModel }
+                        )).render().el;
+
+                        $('.all_items').append(itemHtml);
+                    });
+                }
             }
         });
 

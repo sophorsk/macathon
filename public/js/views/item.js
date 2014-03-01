@@ -4,10 +4,10 @@ define(['CoBoView', 'text!templates/item.html'],
             tagName: 'li',
 
             events: {
-                "click .buy": "buyItem"
+                "click .sendMessage": "sendMessage"
             },
 
-            buyItem: function() {
+            sendMessage: function() {
                 console.log(this.model.toJSON());
                 $.ajax({
                     url: '/accounts/'
