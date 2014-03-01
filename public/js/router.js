@@ -32,7 +32,6 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
             this.changeView(new IndexView( {
                 collection: itemCollection
             }));
-
             itemCollection.fetch();
         },
 

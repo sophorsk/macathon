@@ -14,7 +14,7 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
 
             loadMessagePage: function() {
                 this.messageView = new MessageView();
-                this.tagName.append(this.messageView.render().el);
+                this.$el.append(this.messageView.render());
             },
 
             render: function() {

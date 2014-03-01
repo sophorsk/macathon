@@ -38,7 +38,7 @@ app.get('/api/account/authenticated', function(req, res) {
 })
 
 app.post('/api/login', function(req, res) {
-    console.log('login request');
+    var accountId = req.session.account_id;
 
     var email = req.param('email');
     var password = req.param('password');

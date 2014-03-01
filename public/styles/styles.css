@@ -1,3 +1,13 @@
+.wrapper {
+    width: 1000px;
+    height: auto;
+    margin:0 auto;
+}
+
+.wrapper #search_form {
+    margin: 0 auto;
+}
+
 div .item_box{
     border: solid 1px cadetblue;
     width: 250px;
