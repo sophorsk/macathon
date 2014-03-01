@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
     res.render('index.jade');
 });
 
-app.get('/account/authenticated', function(req, res) {
+app.get('/api/account/authenticated', function(req, res) {
     if ( req.session.loggedIn ) {
         res.send(200);
     } else {
@@ -36,7 +36,7 @@ app.get('/account/authenticated', function(req, res) {
     }
 })
 
-app.post('/login', function(req, res) {
+app.post('/api/login', function(req, res) {
     console.log('login request');
     var email = req.param('email');
     var password = req.param('password');
@@ -62,7 +62,7 @@ app.post('/login', function(req, res) {
 
 });
 
-app.get('/logout', function(req, res) {
+app.get('/api/logout', function(req, res) {
     if (req.session) {
         req.session.auth = null;
         req.session.destroy();
@@ -92,7 +92,7 @@ function getAccountInfo(req, res, account_id) {
 }
 
 /* Get information about the currently logged in account.  */
-app.get('/accounts/me', function(req, res) {
+app.get('/api/accounts/me', function(req, res) {
     var account_id = req.session.account_id;
     if (account_id == undefined) {
         res.send(400);
@@ -102,7 +102,7 @@ app.get('/accounts/me', function(req, res) {
 });
 
 /* Get information about an account specified by ID.  */
-app.get('/accounts/:account_id', function(req, res) {
+app.get('/api/accounts/:account_id', function(req, res) {
     getAccountInfo(req, res, req.param('account_id'));
 
 });
@@ -114,7 +114,7 @@ function getItemsForSale(req, res, seller_id) {
 }
 
 /* Get the items for sale by the currently logged in account.  */
-app.get('/accounts/me/items', function(req, res) {
+app.get('/api/accounts/me/items', function(req, res) {
     var seller_id = req.session.account_id;
     if (seller_id == undefined) {
         res.send(400);
@@ -124,7 +124,7 @@ app.get('/accounts/me/items', function(req, res) {
 });
 
 /* Get the items for sale by the specified account.  */
-app.get('/accounts/:account_id/items', function(req, res) {
+app.get('/api/accounts/:account_id/items', function(req, res) {
     var seller_id = req.param('account_id');
     getItemsForSale(req, res, seller_id);
 });
@@ -135,7 +135,7 @@ app.get('/accounts/:account_id/items', function(req, res) {
  */
 
 /* Search the items by category and search string.  */
-app.get('/items', function(req, res) {
+app.get('/api/items', function(req, res) {
 
     var search_category = req.param('category');
     var search_text = req.param('q');
@@ -150,7 +150,7 @@ app.get('/items', function(req, res) {
 });
 
 /* Post an item for sale using the currently logged in account.  */
-app.post('/post_item', function(req, res) {
+app.post('/api/post_item', function(req, res) {
     var account_id = req.session.account_id;
 
     if (account_id == undefined) {
@@ -167,21 +167,29 @@ app.post('/post_item', function(req, res) {
     };
 
     db.postItem(account_id, item, function(err) {
-        res.send(err ? 400 : 200);
+        if (err) {
+            res.send(400, err);
+        } else {
+            res.send(200);
+        }
     });
 });
 
 /* Get information about the specified item.  */
-app.get('/items/:item_id', function(req, res) {
+app.get('/api/items/:item_id', function(req, res) {
     var item_id = req.param('item_id');
     db.findItemById(item_id, function(err, item) {
-        res.send(err ? 404 : item);
+        if (err) {
+            res.send(404, err);
+        } else {
+            res.send(item);
+        }
     });
 });
 
 /* Make an offer on the specified item using the currently logged in account.
  */
-app.post('/item/:item_id/make_offer', function(req, res) {
+app.post('/api/item/:item_id/make_offer', function(req, res) {
     var account_id = req.session.account_id;
     if (account_id == undefined) {
         res.send(400, "no user is currently logged in!");
@@ -205,7 +213,7 @@ app.post('/item/:item_id/make_offer', function(req, res) {
     });
 });
 
-app.delete('/items', function(req, res) {
+app.delete('/api/items', function(req, res) {
     var account_id = req.session.account_id;
     var itemId = req.param('itemId');
 
@@ -218,7 +226,7 @@ app.delete('/items', function(req, res) {
  * APIs for messaging
  */
 // load all messages for a user
-app.get('/messages', function(req, res) {
+app.get('/api/messages', function(req, res) {
     var account_id = req.session.account_id;
 
     db.getIncomingMessages(account_id, function(err, messages) {
@@ -226,7 +234,7 @@ app.get('/messages', function(req, res) {
     });
 });
 
-app.post('/send_message/:to_account_id', function(req, res) {
+app.post('/api/send_message/:to_account_id', function(req, res) {
 
     var message_text = req.param('message_text');
     var from_account_id = req.session.account_id;
