@@ -19,7 +19,6 @@ define(['router'], function(router) {
 
     var runApplication = function(authenticated) {
         if (!authenticated) {
-            console.log("Test");
             window.location.hash = 'login';
         } else {
             window.location.hash = 'index';
