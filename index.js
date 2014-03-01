@@ -167,6 +167,8 @@ app.post('/api/post_item', function(req, res) {
         price_in_cents: req.param('price_in_cents')
     };
 
+    console.log(item);
+
     db.postItem(account_id, item, function(err) {
         if (err) {
             res.send(500, err);

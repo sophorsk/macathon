@@ -53,11 +53,11 @@ li {
 
 .menu * {
     margin: 0;
-    padding: 20px 0px 0px 20px;
+    padding: 10px 0px 0px 10px;
 }
 
 .menu nav {
-    margin: 30px;
+    margin: 3px;
 }
 
 .menu ul {
