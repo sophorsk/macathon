@@ -147,8 +147,6 @@ app.get('/api/items', function(req, res) {
     var search_category = req.param('category');
     var search_text = req.param('q');
 
-    console.log(search_category);
-
     db.searchItems(search_category, search_text, function(err, items) {
         if (err) {
             res.send(500, err);

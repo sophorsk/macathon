@@ -17,3 +17,9 @@ div .message_box {
     width: 300px;
     height: 300px;
 }
+
+
+/**** remove bullet from li ******/
+li {
+    list-style-type: none;
+}
