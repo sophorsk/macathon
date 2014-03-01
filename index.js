@@ -140,22 +140,17 @@ app.delete('/items', function(req, res) {
 });
 
 app.post('/items/search', function(req, res) {
-    var searchString = req.param('searchString', null);
-    var category = req.param('category', null);
-    var filter = req.param('filter', null);
+    var search_category = req.param('category');
+    var search_text = req.param('searchString');
+    var filter = req.param('filter');
 
-    if (searchString == null) {
-        res.send(400);
-        return;
-    }
-
-    models.Model.searchItems(searchString, category, function(err, items) {
+    models.Model.searchItems(search_category, search_text, function(err, items) {
         if (err || items.length == 0) {
             res.send(404);
         } else {
             res.send(items);
         }
-    })
+    });
 });
 
 
