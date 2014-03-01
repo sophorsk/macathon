@@ -14,7 +14,10 @@ app.configure(function() {
     app.use(express.limit('1mb'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-
+    app.use(express.session({
+        secret: "",
+        store: new MemoryStore()
+    }));
 });
 
 app.get('/', function(req, res) {
@@ -53,22 +56,82 @@ app.post('/login', function(req, res) {
 
 });
 
-app.post('/register', function(req, res) {
-
-});
-
 app.get('/logout', function(req, res) {
+    if (req.session) {
+        req.session.auth = null;
+        req.session.destroy();
+        res.redirect('/');
+    }
+});
 
+/***
+ * All APIs for users
+ */
+app.get('/accounts/:id', function(req, res) {
+    var accountId = req.sessions.accountId;
+
+    models.Model.findUserById(accountId, function(account) {
+        console.log(account);
+        res.send(account);
+    })
+});
+
+app.post('/accounts/:id/item', function(req, res) {
+    var accountId = req.session.accountId;
+
+    models.Model.findUserById(accountId, function(account) {
+        var itemName = req.param('itemName', '');
+        var itemDescription = req.param('itemDescription', '');
+        var price = req.param('price', '');
+        var category = req.param('category', '');
+        var timePosted = req.param('timePosted', '');
+
+        // change here
+        models.Model.postItem(accountId);
+    });
+    res.send(200);
 });
 
 
-/****/
-app.get('/accounts/:id', function(req, res) {
+/***
+ * All APIs for items
+ */
+app.get('/items/all', function(req, res) {
+    //var accountId = req.session.accountId;
 
+    models.Model.loadAllItems(function(allItems) {
+        console.log(allItems);
+        res.send(allItems);
+    })
+});
+
+app.get('/items/:id', function(req, res) {
+    var accountId = req.session.accountId;
+
+    var itemId = req.param('itemId', null);
+    models.Model.findItemById(itemId, function(item) {
+        console.log(item);
+        res.send(item);
+    });
 });
 
 app.post('/items/search', function(req, res) {
+    var searchString = req.param('searchString', null);
+    var category = req.param('category', null);
+    var filter = req.param('filter', null);
 
+    if (searchString == null) {
+        res.send(400);
+        return;
+    }
+
+    models.Model.searchItem(searchString, function(err, items) {
+        if (err || items.length == 0) {
+            res.send(404);
+        } else {
+            res.send(items);
+        }
+    })
 });
 
 

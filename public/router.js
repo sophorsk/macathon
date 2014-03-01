@@ -1,5 +1,5 @@
-define(["views/index"],
-    function(IndexView) {
+define(["views/index", "views/profile", "views/login"],
+    function(IndexView, ProfileView, LoginView) {
     var ApplicationRouter = Backbone.Router.extend({
 
         currentView: null,
@@ -16,10 +16,18 @@ define(["views/index"],
             this.currentView.render();
         },
 
+        login: function() {
+            this.changeView(new LoginView());
+        },
+
         index: function() {
             this.changeView(new IndexView(
 
             ));
+        },
+
+        profile: function(id) {
+
         }
     });
 
