@@ -123,15 +123,11 @@ app.post('/items', function(req, res) {
     var accountId = req.session.accountId;
 
     var itemId = req.param('itemId', null);
-    var price = req.param('price_offer', null);
+    var price_in_cents = req.param('price_in_cents', null);
 
-    models.Model.makeOffer(itemId, accountId, price, function(err) {
-        if (err) {
-            console.log(err);
-        }
+    models.Model.makeOffer(itemId, accountId, price_in_cents, function(err) {
+        res.send(err ? 400 : 200);
     });
-
-    res.send(200);
 });
 
 app.delete('/items', function(req, res) {
