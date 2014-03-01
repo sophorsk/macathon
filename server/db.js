@@ -96,7 +96,7 @@ exports = module.exports = function(_pg, callback)
            "    price_in_cents    INTEGER NOT NULL,\n"               +
            "    time_posted       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
            "    description       VARCHAR(2000),\n"                  +
-           "    picture           VARCHAR(200000)\n"                 +
+           "    picture           VARCHAR(1000000)\n"                +
            ");\n";
 
     sql += "CREATE TABLE IF NOT EXISTS offer\n"                      +
@@ -283,6 +283,10 @@ exports.deleteItem = function(account_id, item_id, callback)
     });
 }
 
+loadTestImage = function(name) {
+    return fs.readFileSync("server/test_images/" + name + ".png").toString("base64");
+}
+
 storeTestData = function(callback) {
     var email_address = "test@example.edu";
     var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // "password"
@@ -290,21 +294,29 @@ storeTestData = function(callback) {
     exports.login(email_address, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Essentials Watch",
                                    category : "Watches",
-                                   price_in_cents : 4000}, function(err) {
+                                   price_in_cents : 4000,
+                                   picture : loadTestImage("watch")},
+                                   function(err) {
     exports.postItem(account.id, { name : "Entrepreneurship Textbook",
                                    category : "Textbooks",
-                                   price_in_cents : 9500}, function(err) {
-    var green_chair = fs.readFileSync("server/green_chair.png").toString("base64");
+                                   price_in_cents : 9500,
+                                   picture : loadTestImage("book")},
+                                   function(err) {
     exports.postItem(account.id, { name : "Green chair",
                                    category : "Furniture",
                                    price_in_cents : 1500,
-                                   picture: green_chair}, function(err) {
+                                   picture: loadTestImage("chair")},
+                                   function(err) {
     exports.postItem(account.id, { name : "Backpack",
                                    category : "Backpacking",
-                                   price_in_cents : 1000}, function(err) {
+                                   price_in_cents : 1000,
+                                   picture : loadTestImage("backpack")},
+                                   function(err) {
     exports.postItem(account.id, { name : "Basic Desk",
                                    category : "Furniture",
-                                   price_in_cents : 9900}, function(err) {
+                                   price_in_cents : 9900,
+                                   picture : loadTestImage("ikea desk")},
+                                   function(err) {
     exports.postItem(account.id, { name : "Demi Lovato Tickets",
                                    category : "Tickets",
                                    description : "I have two tickets to Demi Lovato's " +
