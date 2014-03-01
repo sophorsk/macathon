@@ -1,5 +1,5 @@
-define(["views/index", "views/profile", "views/login", "models/ItemCollection"],
-    function(IndexView, ProfileView, LoginView, ItemCollection) {
+define(["views/index", "views/profile", "views/login", "models/Item", "models/ItemCollection"],
+    function(IndexView, ProfileView, LoginView, Item, ItemCollection) {
     var ApplicationRouter = Backbone.Router.extend({
 
         currentView: null,
@@ -32,6 +32,7 @@ define(["views/index", "views/profile", "views/login", "models/ItemCollection"],
         },
 
         profile: function(id) {
+            var model = new Account({id: id});
 
         },
 

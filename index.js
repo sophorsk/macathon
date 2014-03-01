@@ -181,12 +181,18 @@ app.post('/accounts/:id/messages', function(req, res) {
     var accountId = req.session.accountId;
 
     var recipientId = req.param('recipient', null);
-    models.Model.sendMessage(accountId, recipientId, function(err) {
+    var content = req.param('text', null);
+
+    models.Model.sendMessage(content, accountId, recipientId, function(err) {
         if (err) {
             console.log(err);
         }
     });
     res.send(200)
+});
+
+app.delete('/accounts/:id/messages', function(req, res) {
+
 });
 
 
