@@ -122,8 +122,8 @@ app.get('/items/:itemId', function(req, res) {
 app.post('/items', function(req, res) {
     var accountId = req.session.accountId;
 
-    var itemId = req.param('itemId', null);
-    var price_in_cents = req.param('price_in_cents', null);
+    var itemId = req.param('itemId');
+    var price_in_cents = req.param('price_in_cents');
 
     models.Model.makeOffer(itemId, accountId, price_in_cents, function(err) {
         res.send(err ? 400 : 200);
@@ -132,15 +132,11 @@ app.post('/items', function(req, res) {
 
 app.delete('/items', function(req, res) {
     var accountId = req.session.accountId;
-
-    var itemId = req.param('itemId', null);
+    var itemId = req.param('itemId');
 
     models.Model.deleteItem(accountId, itemId, function(err) {
-        if (err) {
-            console.log(err);
-        }
+        res.send(err ? 400 : 200);
     });
-    res.send(200);
 });
 
 app.post('/items/search', function(req, res) {
