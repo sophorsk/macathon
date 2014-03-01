@@ -23,7 +23,7 @@ define(["views/index", "views/profile", "views/login", "models/Item", "models/It
 
         index: function() {
             var itemCollection = new ItemCollection();
-            itemCollection.url = '/items/all';
+            itemCollection.url = '/items';
 
             this.changeView(new IndexView( {
                 collection: itemCollection
