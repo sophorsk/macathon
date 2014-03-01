@@ -80,16 +80,19 @@ app.post('/accounts/:id/item', function(req, res) {
     var accountId = req.session.accountId;
 
     models.Model.findUserById(accountId, function(account) {
-        var itemName = req.param('itemName', '');
-        var itemDescription = req.param('itemDescription', '');
-        var price = req.param('price', '');
-        var category = req.param('category', '');
-        var timePosted = req.param('timePosted', '');
+        var item = {
+            itemName: req.param('itemName', ''),
+            itemDescription: req.param('itemDescription', ''),
+            price: req.param('price', ''),
+            category: req.param('category', ''),
+            timePosted: req.param('timePosted', '')
+        }
 
         // change here
-        models.Model.postItem(accountId);
+        models.Model.postItem(accountId, item, function(object) {
+            res.send(object);
+        });
     });
-    res.send(200);
 });
 
 
@@ -133,6 +136,7 @@ app.post('/items/search', function(req, res) {
         }
     })
 });
+
 
 
 app.listen(8080);
