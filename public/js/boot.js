@@ -6,6 +6,7 @@ require.config({
     paths: {
         jQuery: '/js/libs/jquery',
         Underscore: '/js/libs/underscore',
+        Bootstrap: '/js/libs/bootstrap.min',
         Backbone: '/js/libs/backbone',
         async : '/js/libs/async',
         models: 'models',

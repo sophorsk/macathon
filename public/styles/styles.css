@@ -102,6 +102,19 @@ li {
 /*************************/
 
 
+/************* Listing **********/
+div .post_item {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+
+div .your_items {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+/**********************************/
+
 
 
 /************************/

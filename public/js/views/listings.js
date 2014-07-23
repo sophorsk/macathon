@@ -19,11 +19,10 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
                     price_in_cents: $('input[name=price_in_cents]').val()
                 }, function(data) {
                     console.log(data);
-                    $messageArea.text('Item Posted !');
+                    $messageArea.text('Your item has been posted!');
                 }).error(function() {
-                        $messageArea.text('Cannot post item !');
+                        $messageArea.text('Your item cannot be posted!');
                     });
-
                 return false;
             },
 
