@@ -71,7 +71,8 @@ exports = module.exports = function (_pg, callback) {
         "    first_name        VARCHAR(64) NOT NULL,\n" +
         "    last_name         VARCHAR(64) NOT NULL,\n" +
         "    time_created      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
-        "    pending_key       CHAR(40),\n" +
+        "    pending_key       CHAR(15),\n" +
+        "    verified          BOOLEAN NOT NULL,\n" +     // add verified status of an email account
         "    profile_picture   VARCHAR(200000)\n" +
         ");\n";
 
@@ -137,12 +138,20 @@ exports.findAccountById = function (account_id, callback) {
         });
 }
 
-exports.register = function (email_address, password_sha1, first_name, last_name, callback) {
+exports.register = function (email_address, password_sha1, first_name, last_name, pending_key, verified, callback) {
     runQuery("INSERT INTO account (email_address, password_sha1, " +
-        "first_name, last_name) " +
-        "VALUES ($1, $2, $3, $4);\n",
-        [email_address, password_sha1, first_name, last_name],
+        "first_name, last_name, pending_key, verified) " +
+        "VALUES ($1, $2, $3, $4, $5, $6);\n",
+        [email_address, password_sha1, first_name, last_name, pending_key, verified],
         function (err, result) {
+            callback(err);
+        });
+}
+
+exports.verifyRegistration = function(pending_key, callback) {
+    runQuery("UPDATE account SET verified = true WHERE pending_key = $1;\n",
+        [pending_key],
+        function(err, result) {
             callback(err);
         });
 }
@@ -259,12 +268,12 @@ loadTestImage = function (name) {
 }
 
 storeTestData = function(callback) {
-    var email_address_1 = "test@example.edu";
-    var email_address_2 = "test2@example.edu";
+    var email_address_1 = "test@macalester.edu";
+    var email_address_2 = "test2@macalester.edu";
     var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // "password"
 
-    exports.register(email_address_1, password_sha1, "Joe", "Example", function(err) {
-    exports.register(email_address_2, password_sha1, "Bob", "Testing", function(err) {
+    exports.register(email_address_1, password_sha1, "Joe", "Example", "123456789012345", true, function(err) {
+    exports.register(email_address_2, password_sha1, "Bob", "Testing", "123456789012345", true, function(err) {
     exports.login(email_address_1, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Essentials Watch",
                                    category : "Watches",

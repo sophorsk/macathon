@@ -1,7 +1,7 @@
-.wrapper {
+div .wrapper {
     width: 1000px;
     height: auto;
-    margin:0 auto;
+    margin: 50px auto;
 }
 
 .wrapper #search_form {
@@ -58,6 +58,7 @@ li {
 
 .menu nav {
     margin: 3px;
+    width: 200px;
 }
 
 .menu ul {
@@ -102,6 +103,27 @@ li {
 /*************************/
 
 
+/************ Login Page *********/
+div .page_title {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+div .form-holder {
+    margin-left: 50px;
+    margin-top: 50px;
+    float: left;
+    margin-right: 200px;
+}
+
+div .information-holder {
+    margin-top: 100px;
+    float: right;
+    width: 500px;
+}
+/********************************/
+
+
 /************* Listing **********/
 div .post_item {
     margin-left: 50px;
@@ -115,11 +137,20 @@ div .your_items {
 }
 /**********************************/
 
+/***** profile page *****/
 
+div .user_information {
+    margin-left: 50px;
+    margin-top: 50px;
+}
 
 /************************/
 
+
+/************************/
 div .item_box{
+    margin-left: 10px;
+    margin-top: 10px;
     border: solid 1px cadetblue;
     width: 250px;
     height: 250px;

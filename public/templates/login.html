@@ -1,30 +1,61 @@
-<h1> Welcome to COBO. </h1>
+<script>
+    $(document).ready(function() {
+        $("#load_register").click(function(e) {
+            $("#register_form").show();
+            $("#load_login").show();
+            $("#login_form").hide();
+            $("#load_register").hide();
+            e.preventDefault();
+        });
+    });
+</script>
 
-<h1>Sign In</h1>
+<div class="page_title">
+    <h2> Welcome to College Best Offers aka cOBO </h2>
+</div>
 
-<form>
-<fieldset>
-    <legend>Credentials</legend>
-    <p class="error" id="error"></p>
+<div>
+    <div class="form-holder">
+        <form id="login_form">
+            <fieldset>
+                <legend> Login </legend>
+                <p class="error" id="error"></p>
 
-    <label>
-        Email:
-        <input type="text" name="email">
-    </label>
-    <br />
-    <label>
-        Password:
-        <input type="password" name="password">
-    </label>
+                <label> Email: <input type="text" name="email"> </label> <br />
+                <label> Password: <input type="password" name="password"> </label> <br />
+                <div id="login-submit">
+                    <input type="submit" value="Login Now">
+                </div>
+            </fieldset>
+        </form>
 
-    <br />
-    <div id="login-submit">
-        <input type="submit" value="Login Now">
+        <button id="load_register"> Registration </button>
+
+        <form id="register_form" style="display: none">
+            <fieldset>
+                <legend> Registration </legend>
+                <p class="error"></p>
+
+                <label> Email: <input type="text" name="remail"> </label> <br/>
+                <label> First Name: <input type="text" name="rfirst_name"> </label> <br/>
+                <label> Last Name: <input type="text" name="rlast_name"> </label> <br/>
+                <label> Password: <input type="password" name="rpassword"> </label> <br/>
+
+                <div id="register-submit">
+                    <input type="submit" value="Register">
+                </div>
+            </fieldset>
+        </form>
+
+        <button id="load_login" style="display: none"> Login </button>
     </div>
-</fieldset>
-</form>
 
-<ul>
-  <li><a href="#forgotpassword">Forgot Password ?</a></li>
-  <li><a href="#register">Register for an account ?</a></li>
-</ul>
+    <div class="information-holder">
+        <ul>
+            <li><h4> Sell your stuff, don't throw it away ! </h4></li>
+            <li><h4> Buy cheap stuff from your classmates and friends </h4></li>
+            <li><h4> Guarantee safety, and you can make new friends </h4></li>
+        </ul>
+    </div>
+</div>
+

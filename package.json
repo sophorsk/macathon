@@ -1,5 +1,6 @@
 {
-    "name": "Macathon",
+    "name": "COBO",
+    "description": "College Best Offers Application",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
@@ -7,6 +8,8 @@
         "connect": ">= 1.9.1",
         "jade": ">= 0.0.1",
         "pg": "*",
-        "sha1" : "*"
+        "sha1" : "*",
+        "chance" : ">= 0.5.6",
+        "nodemailer" : "latest"
     }
 }

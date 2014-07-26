@@ -4,6 +4,10 @@ var MemoryStore = require('connect').session.MemoryStore;
 var pg = require('pg').native;
 var sha1 = require('sha1');
 
+var Chance = require('chance');
+var nodemailer = require("nodemailer");
+var mail_credential = require('./config/mail.json');
+
 var db;
 
 db = require('./server/db')(pg, function () {
@@ -57,12 +61,20 @@ db = require('./server/db')(pg, function () {
         }
 
         var password_hash = sha1(password);
+        // generate pending key using Chance, then add to registration
+        var chance = new Chance();
+        var pending_key = chance.hash({length: 15});
+        var verified = false;
 
-        db.register(email, password_hash, first_name, last_name, function(err, account) {
+        db.register(email, password_hash, first_name, last_name, pending_key, verified, function(err) {
             if (err) {
                 res.send(500, err);
             } else {
-                // register command
+                req.session.account_id = undefined;
+                // send account verification email
+                sendEmail(email, pending_key);
+                console.log('Registration has been completed!');
+                res.send(200);
             }
         });
     });
@@ -88,9 +100,11 @@ db = require('./server/db')(pg, function () {
             if (err) {
                 res.send(500, err);
             } else {
-                console.log('Logged in account %s successfully!', email);
-                req.session.account_id = account.id;
-                res.send(200);
+                if (account.verified) {
+                    console.log('Logged in account %s successfully!', email);
+                    req.session.account_id = account.id;
+                    res.send(200);
+                }
             }
         });
     });
@@ -105,8 +119,15 @@ db = require('./server/db')(pg, function () {
     });
 
     /* Register verification */
-    app.get('/verify/:account_id', function(req, res) {
-
+    app.get('/verify/:key', function(req, res) {
+        var pending_key = req.param("key");
+        db.verifyRegistration(pending_key, function(err) {
+            if (err) {
+                res.send(404, err);
+            } else {
+                res.redirect('#index');
+            }
+        })
     });
 
     /***
@@ -118,8 +139,9 @@ db = require('./server/db')(pg, function () {
                 res.send(404, err);
             } else {
                 account.password_sha1 = undefined;
-                account.pending_key = undefined;
-                account.email_address = undefined;
+                //account.pending_key = undefined;
+                //account.email_address = undefined;
+                console.log(account);
 
                 res.send(account);
             }
@@ -325,6 +347,44 @@ db = require('./server/db')(pg, function () {
             }
         });
     });
+
+
+    /* Send email from shareMe to a recipient */
+    function sendEmail(recipient, verified_string)  {
+        var smtpTransport = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: mail_credential.email,
+                pass: mail_credential.password
+            }
+        });
+
+        // setup e-mail data with unicode symbols
+        var mailOptions = {
+            from: "COBO team <cobo.at.mac@gmail.com>", // sender address
+            to: recipient, // list of receivers
+            subject: "COBO account Registration", // Subject line
+            text: "Hello user: " + verified_string, // plaintext body
+            html: "<div> Dear user </div> " +
+                "<p> Please verify your registration at the following link: </p>" +
+                "localhost:8080/verify/" + verified_string +   // for testing purposes
+                "<br>" +
+                "<br>" +
+                "<div> Thank you, </div>" + // html body
+                "<div> COBO team </div>"
+        }
+
+        // send mail with defined transport object
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                console.log(error);
+            }else{
+                console.log("Message sent: " + response.message);
+            }
+
+            smtpTransport.close(); // shut down the connection pool, no more messages
+        });
+    }
 
     app.listen(8080);
     console.log("Server listening at localhost:8080");
