@@ -104,25 +104,63 @@ li {
 
 
 /************ Login Page *********/
+div #login-top-bar {
+    width: 100%;
+    height: 65px;
+}
+
+div #login-top-bar .top-bar-logo {
+    margin-left: 100px;
+    float: left;
+}
+
+div #login-top-bar .top-bar-title {
+    margin-left: 250px;
+    float: left;
+    font-size: 40px;
+}
+
+div #login-content{
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/login-background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 div .page_title {
-    margin-left: 50px;
-    margin-top: 50px;
+    margin-left: 100px;
+    width: 500px;
+}
+
+.welcome-message {
+    padding-top: 40px;
+    color: #ffffff;
+    font-size: 32px;
+}
+
+div .information-holder {
+    padding-top: 40px;
+    float: left;
+    width: 500px;
+}
+
+.statement {
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 30px;
 }
 
 div .form-holder {
     margin-left: 50px;
-    margin-top: 50px;
-    float: left;
-    margin-right: 200px;
-}
-
-div .information-holder {
-    margin-top: 100px;
     float: right;
-    width: 500px;
+    margin-right: 200px;
+    line-height: 10px;
 }
-/********************************/
 
+/********************************/
 
 /************* Listing **********/
 div .post_item {

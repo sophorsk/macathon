@@ -127,7 +127,7 @@ db = require('./server/db')(pg, function () {
             } else {
                 res.redirect('#index');
             }
-        })
+        });
     });
 
     /***
@@ -347,7 +347,6 @@ db = require('./server/db')(pg, function () {
             }
         });
     });
-
 
     /* Send email from shareMe to a recipient */
     function sendEmail(recipient, verified_string)  {

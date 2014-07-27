@@ -10,52 +10,62 @@
     });
 </script>
 
-<div class="page_title">
-    <h2> Welcome to College Best Offers aka cOBO </h2>
+<div id="login-top-bar">
+    <div class="top-bar-logo">
+        <img src="../images/logo_100x100.png" width=70px height=70px>
+    </div>
+    <div class="top-bar-title">
+        <h2> College Best Offers - COBO</h2>
+    </div>
 </div>
 
-<div>
-    <div class="form-holder">
-        <form id="login_form">
-            <fieldset>
-                <legend> Login </legend>
-                <p class="error" id="error"></p>
-
-                <label> Email: <input type="text" name="email"> </label> <br />
-                <label> Password: <input type="password" name="password"> </label> <br />
-                <div id="login-submit">
-                    <input type="submit" value="Login Now">
-                </div>
-            </fieldset>
-        </form>
-
-        <button id="load_register"> Registration </button>
-
-        <form id="register_form" style="display: none">
-            <fieldset>
-                <legend> Registration </legend>
-                <p class="error"></p>
-
-                <label> Email: <input type="text" name="remail"> </label> <br/>
-                <label> First Name: <input type="text" name="rfirst_name"> </label> <br/>
-                <label> Last Name: <input type="text" name="rlast_name"> </label> <br/>
-                <label> Password: <input type="password" name="rpassword"> </label> <br/>
-
-                <div id="register-submit">
-                    <input type="submit" value="Register">
-                </div>
-            </fieldset>
-        </form>
-
-        <button id="load_login" style="display: none"> Login </button>
+<div id="login-content">
+    <div class="page_title">
+        <h2 class="welcome-message"> Welcome to College Best Offers. </h2>
+        <div class="information-holder">
+            <p class="statement">
+                Sell and buy items within your college in a reasonable price.
+                Build a better community via reusability and trust between the
+                buyer and seller.
+            </p>
+        </div>
     </div>
 
-    <div class="information-holder">
-        <ul>
-            <li><h4> Sell your stuff, don't throw it away ! </h4></li>
-            <li><h4> Buy cheap stuff from your classmates and friends </h4></li>
-            <li><h4> Guarantee safety, and you can make new friends </h4></li>
-        </ul>
+    <div>
+        <div class="form-holder">
+            <form id="login_form">
+                <fieldset>
+                    <legend> Login </legend>
+                    <p class="error" id="error"></p>
+
+                    <label> Email: <input type="text" name="email"> </label> <br />
+                    <label> Password: <input type="password" name="password"> </label> <br />
+                    <div id="login-submit">
+                        <input type="submit" value="Login Now">
+                    </div>
+                </fieldset>
+            </form>
+
+            <button id="load_register"> Registration </button>
+
+            <form id="register_form" style="display: none">
+                <fieldset>
+                    <legend> Registration </legend>
+                    <p class="error"></p>
+
+                    <label> Email: <input type="text" name="remail"> </label> <br/>
+                    <label> First Name: <input type="text" name="rfirst_name"> </label> <br/>
+                    <label> Last Name: <input type="text" name="rlast_name"> </label> <br/>
+                    <label> Password: <input type="password" name="rpassword"> </label> <br/>
+
+                    <div id="register-submit">
+                        <input type="submit" value="Register">
+                    </div>
+                </fieldset>
+            </form>
+
+            <button id="load_login" style="display: none"> Login </button>
+        </div>
     </div>
 </div>
 
