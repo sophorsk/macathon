@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var MemoryStore = require('connect').session.MemoryStore;
+//var MemoryStore = require('connect').session.MemoryStore;
+var MemoryStore = new express.session.MemoryStore();
 var pg = require('pg').native;
 var sha1 = require('sha1');
 
