@@ -25,7 +25,7 @@ db = require('./server/db')(pg, function () {
         app.use(express.cookieParser());
         app.use(express.session({
             secret: "macathonsecretkey",
-            store: new MemoryStore()
+            store: MemoryStore
         }));
     });
 
