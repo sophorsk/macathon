@@ -10,18 +10,22 @@
     });
 </script>
 
-<div id="login-top-bar">
+<!-- <div id="login-top-bar">
     <div class="top-bar-logo">
         <img src="../images/logo_100x100.png" width=70px height=70px>
     </div>
     <div class="top-bar-title">
         <h2> College Best Offers - COBO</h2>
     </div>
-</div>
+</div> -->
 
 <div id="login-content">
+    <div class="login-logo">
+        <img src="../images/logo.png" width=120px height=120px>
+    </div>
+
     <div class="page_title">
-        <h2 class="welcome-message"> Welcome to College Best Offers. </h2>
+        <h2 class="welcome-message"> Welcome to College Best Offers - COBO. </h2>
         <div class="information-holder">
             <p class="statement">
                 Sell and buy items within your college in a reasonable price.
@@ -35,11 +39,11 @@
         <div class="form-holder">
             <form id="login_form">
                 <fieldset>
-                    <legend> Login </legend>
+                    <!-- <legend> Login </legend> -->
                     <p class="error" id="error"></p>
 
-                    <label> Email: <input type="text" name="email"> </label> <br />
-                    <label> Password: <input type="password" name="password"> </label> <br />
+                    <label> <input type="text" name="email" placeholder = "Email"> </label> <br />
+                    <label> <input type="password" name="password" placeholder = "Password"> </label> <br />
                     <div id="login-submit">
                         <input type="submit" value="Login Now">
                     </div>
@@ -50,13 +54,13 @@
 
             <form id="register_form" style="display: none">
                 <fieldset>
-                    <legend> Registration </legend>
+                    <!-- <legend> Registration </legend> -->
                     <p class="error"></p>
 
-                    <label> Email: <input type="text" name="remail"> </label> <br/>
-                    <label> First Name: <input type="text" name="rfirst_name"> </label> <br/>
-                    <label> Last Name: <input type="text" name="rlast_name"> </label> <br/>
-                    <label> Password: <input type="password" name="rpassword"> </label> <br/>
+                    <label><input type="text" name="remail" placeholder = "Email"> </label> <br/>
+                    <label><input type="text" name="rfirst_name" placeholder = "First Name"> </label> <br/>
+                    <label><input type="text" name="rlast_name" placeholder =  "Last Name"> </label> <br/>
+                    <label><input type="password" name="rpassword" placeholder = "Password"> </label> <br/>
 
                     <div id="register-submit">
                         <input type="submit" value="Register">
@@ -64,7 +68,7 @@
                 </fieldset>
             </form>
 
-            <button id="load_login" style="display: none"> Login </button>
+            <button id="load_login" style="display: none"> Already have an account? Login now! </button>
         </div>
     </div>
 </div>

@@ -6,7 +6,16 @@ define(['CoBoView', 'text!templates/login.html'], function(CoBoView, loginTempla
 
         events: {
             "click #login-submit": "login",
-            "click #register-submit": "register"
+            "click #register-submit": "register",
+            "click #load_login": "load_login"
+        },
+
+        load_login: function() {
+            $("#register_form").hide();
+            $("#load_login").hide();
+            $("#login_form").show();
+            $("#load_register").show();
+            // e.preventDefault();
         },
 
         login: function() {

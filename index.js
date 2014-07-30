@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 //var MemoryStore = require('connect').session.MemoryStore;
 var MemoryStore = new express.session.MemoryStore();
-var pg = require('pg').native;
+var pg = require('pg');
 var sha1 = require('sha1');
 
 var Chance = require('chance');
