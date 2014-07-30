@@ -5,9 +5,15 @@
             $("#load_login").show();
             $("#login_form").hide();
             $("#load_register").hide();
-            e.preventDefault();
-        });
+            $(".error").hide();
+            $('input[type=text]').val("");
+            $('input[type=password]').val("");
+
+            // e.preventDefault();
+        });   
     });
+
+
 </script>
 
 <!-- <div id="login-top-bar">
@@ -40,7 +46,8 @@
             <form id="login_form">
                 <fieldset>
                     <!-- <legend> Login </legend> -->
-                    <p class="error" id="error"></p>
+                    <p class="error" id="login_error"></p>
+                    <!-- <p id = "verified"></p> -->
 
                     <label> <input type="text" name="email" placeholder = "Email"> </label> <br />
                     <label> <input type="password" name="password" placeholder = "Password"> </label> <br />
@@ -50,14 +57,14 @@
                 </fieldset>
             </form>
 
-            <button id="load_register"> Registration </button>
+            <button id="load_register"> New to the site? Register here! </button>
 
             <form id="register_form" style="display: none">
                 <fieldset>
                     <!-- <legend> Registration </legend> -->
-                    <p class="error"></p>
+                    <p class="error" id="reg_error"></p>
 
-                    <label><input type="text" name="remail" placeholder = "Email"> </label> <br/>
+                    <label><input type="text" name="remail" placeholder = "Email"></label> <br/>
                     <label><input type="text" name="rfirst_name" placeholder = "First Name"> </label> <br/>
                     <label><input type="text" name="rlast_name" placeholder =  "Last Name"> </label> <br/>
                     <label><input type="password" name="rpassword" placeholder = "Password"> </label> <br/>

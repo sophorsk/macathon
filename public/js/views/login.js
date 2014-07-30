@@ -7,15 +7,7 @@ define(['CoBoView', 'text!templates/login.html'], function(CoBoView, loginTempla
         events: {
             "click #login-submit": "login",
             "click #register-submit": "register",
-            "click #load_login": "load_login"
-        },
-
-        load_login: function() {
-            $("#register_form").hide();
-            $("#load_login").hide();
-            $("#login_form").show();
-            $("#load_register").show();
-            // e.preventDefault();
+            "click #load_login": "load_login_form"
         },
 
         login: function() {
@@ -25,8 +17,8 @@ define(['CoBoView', 'text!templates/login.html'], function(CoBoView, loginTempla
             }, function(data) {
                 window.location.hash = 'index';
             }).error(function(){
-                    $("#error").text('Unable to login.');
-                    $("#error").slideDown();
+                    $("#login_error").text('Unable to login.');
+                    $("#login_error").slideDown();
                 });
             return false;
         },
@@ -46,22 +38,32 @@ define(['CoBoView', 'text!templates/login.html'], function(CoBoView, loginTempla
                     $("#load_register").show();
                     $("#register_form").hide();
                     $("#load_login").hide();
-                    $("#error").text('Verification email has been sent to your email address!');
-                    $("#error").slideDown();
+                    $("#login_error").text('Verification email has been sent to your email address!');
+                    $("#login_error").slideDown();
                 }).error(function() {
-                        $(".error").text('Unable to register.');
-                        $(".error").slideDown();
+                        $("#reg_error").text('Unable to register.');
+                        $("#reg_error").slideDown();
                     });
             } else {
-                $(".error").text('Please use your school email address!');
-                $(".error").slideDown();
+                $("#reg_error").text('Please use your school email address!');
+                $("#reg_error").slideDown();
             }
             return false;
         },
 
+        load_login_form: function() {
+            $("#register_form").hide();
+            $("#load_login").hide();
+            $("#login_form").show();
+            $("#load_register").show();
+            $(".error").hide();
+            $('input[type=text]').val("");
+            $('input[type=password]').val("");
+        },
+
         render: function() {
             this.$el.html(loginTemplate);
-            $("#error").hide();
+            $(".error").hide();
             $("input[name=email]").focus();
         }
     });
