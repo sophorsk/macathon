@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-//var MemoryStore = require('connect').session.MemoryStore;
 var MemoryStore = new express.session.MemoryStore();
 var pg = require('pg');
 var sha1 = require('sha1');
@@ -140,10 +139,6 @@ db = require('./server/db')(pg, function () {
                 res.send(404, err);
             } else {
                 account.password_sha1 = undefined;
-                //account.pending_key = undefined;
-                //account.email_address = undefined;
-                console.log(account);
-
                 res.send(account);
             }
         });
