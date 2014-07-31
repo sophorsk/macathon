@@ -6,7 +6,7 @@ html,body,div,ul,li,h1,h2,h3,fieldset,button,input,p {
 div .wrapper {
     width: 1000px;
     height: auto;
-    margin: 50px auto;
+    margin: 25px auto;
 }
 
 .wrapper #search_form {
@@ -32,9 +32,13 @@ li {
     list-style-type: none;
 }
 
+.second_wrapper {
+    width: 100%;
+    height: 70px;
+}
+
 .second_wrapper #logo_div {
-    width: 250px;
-    height: 100px;
+    width: 70px;
     float: left;
 }
 
@@ -45,14 +49,22 @@ li {
 }
 
 .second_wrapper #search_form{
-    width: 250px;
-    height: 100px;
+    display: inline-block;
+    width: 520px;
     float: left;
+    padding-top: 10px;
+}
+
+.second_wrapper #search_form input {
+    height: 30px;
+}
+
+.second_wrapper #search_form button {
+    margin-top: -10px;
 }
 
 .second_wrapper #profile{
-    width: 250px;
-    height: 100px;
+    width: 350px;
     float: left;
 }
 
@@ -61,22 +73,23 @@ li {
     padding: 10px 0px 0px 10px;
 }
 
-.menu nav {
+/*.menu nav {
     margin: 3px;
     width: 200px;
-}
+}*/
 
 .menu ul {
+    margin-top: -10px;
     overflow: auto;
     list-style-type: none;
 }
 
 .menu li {
-    height: 25px;
+    height: 15px;
     float: left;
     margin-right: 0px;
     border-right: 1px solid #aaa;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .menu li:last-child {
@@ -147,7 +160,6 @@ img {
 div .page_title {
     margin: auto;
     width: 500px;
-    /*display: block;*/
 }
 
 .welcome-message {
@@ -210,7 +222,6 @@ input[type="submit"], button {
     font: 16px Georgia, "Times New Roman", Times, serif;
     padding: 5px 15px;
     border: none;
-    /*text-shadow: 0 1px 1px #000000;*/
 }
 
 /*.buttons {
@@ -245,14 +256,13 @@ div .user_information {
 
 
 /************************/
+
 div .item_box{
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 25px;
     border: solid 1px cadetblue;
-    width: 250px;
-    height: 250px;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 300px;
+    height: 300px;
     float: left;
     position : relative;
 }
@@ -260,37 +270,49 @@ div .item_box{
 div .item_details {
     margin : 0;
     padding : 0;
-    width : 250px;
+    width : 300px;
     height : 75px;
     position : absolute;
     bottom : 0;
+    border-top: 1px solid cadetblue;
 }
 
 div .item_seller {
     display: inline-block;
-    font: 16px sans-serif;
+    font: 12px sans-serif;
     width: 70px;
     height: 70px;
-    margin: 0;
-    padding: 0;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.seller_pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid cadetblue;
 }
 
 div .item_name {
     display: inline-block;
-    font: 16px sans-serif;
+    font: 14px sans-serif;
     font-weight: bold;
-    width: 100px;
-    height: 70px;
+    width: 140px;
+    height: 75px;
     margin: 0;
     padding: 0;
+    text-align: center;
+    vertical-align: middle;
 }
 
 div .item_price {
     display: inline-block;
     width: 40px;
-    height : 70px;
+    height : 75px;
     font: 20px sans-serif;
     color: #3333AA;
     margin: 0;
     padding: 0;
+    text-align: center;
+    vertical-align: middle;
 }

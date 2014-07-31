@@ -1,7 +1,7 @@
 <div class="item_box">
     <div class="image">
       <% if (picture) { %>
-        <img src="data:image/png;base64,<%= picture %>" width=175px height=175px />
+        <img src="data:image/png;base64,<%= picture %>" width='275px' height='225px' />
       <% } else if (description) { %>
         <%= description %>
       <% } else { %>
@@ -10,6 +10,7 @@
     </div>
     <div class="item_details">
         <div class="item_seller">
+            <img class = "seller_pic"/>
             <%= seller_name %>
         </div>
 
