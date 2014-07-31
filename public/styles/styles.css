@@ -1,13 +1,7 @@
-/*body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+html,body,div,ul,li,h1,h2,h3,fieldset,button,input,p { 
     margin:0;
     padding:0;
 }
-html,body {
-    margin:0;
-    padding:0;
-}
-*/
-
 
 div .wrapper {
     width: 1000px;
@@ -143,22 +137,28 @@ div #login-content{
 
 div .login-logo {
     padding-top: 20px;
-    margin-left: 620px;
-*/}
+}
+
+img {
+    margin: auto;
+    display: block;
+}
 
 div .page_title {
-    margin-left: 450px;
+    margin: auto;
     width: 500px;
+    /*display: block;*/
 }
 
 .welcome-message {
     color: #ffffff;
     font-size: 32px;
     float: left;
+    text-align: center;
 }
 
 div .information-holder {
-    padding-top: 20px;
+    padding-top: 5px;
     float: left;
     width: 500px;
 }
@@ -167,18 +167,57 @@ div .information-holder {
     font-size: 20px;
     color: #ffffff;
     line-height: 25px;
+    text-align: center
 }
 
 div .form-holder {
-    /*margin-left: 50px;*/
-    /*float: right;*/
-    /*margin-right: 200px;*/
-    padding-top: 20px;
-    line-height: 10px;
     margin-top: 200px;
-    margin-left: 600px;
-
+    margin-left: 590px;
+    width: 500px;
 }
+
+div #login-submit {
+    margin-left: 45px;
+}
+
+div #load_register {
+    margin-left: -10px;
+}
+
+div #register-submit {
+    margin-left: 65px;
+}
+
+div #load_login {
+    margin-left: -27px;
+}
+
+label {
+    height: 25px;
+}
+label input[type="text"], label input[type="password"] {
+    height: 30px;
+    font-size: 14px
+}
+
+input[type="submit"], button {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: #fff;
+    background: #98C1FF;
+    font: 16px Georgia, "Times New Roman", Times, serif;
+    padding: 5px 15px;
+    border: none;
+    /*text-shadow: 0 1px 1px #000000;*/
+}
+
+/*.buttons {
+    margin: 0 auto;
+    display: block;
+    width: 300px;
+}*/
 
 /********************************/
 

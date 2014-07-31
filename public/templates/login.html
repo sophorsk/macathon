@@ -9,7 +9,7 @@
             $('input[type=text]').val("");
             $('input[type=password]').val("");
 
-            // e.preventDefault();
+            e.preventDefault();
         });   
     });
 
@@ -27,11 +27,11 @@
 
 <div id="login-content">
     <div class="login-logo">
-        <img src="../images/logo.png" width=120px height=120px>
+        <img src="../images/logo.png" width='120px' height='120px'>
     </div>
 
     <div class="page_title">
-        <h2 class="welcome-message"> Welcome to College Best Offers - COBO. </h2>
+        <h2 class="welcome-message"> Welcome to College Best Offers - COBO </h2>
         <div class="information-holder">
             <p class="statement">
                 Sell and buy items within your college in a reasonable price.
@@ -41,40 +41,41 @@
         </div>
     </div>
 
-    <div>
-        <div class="form-holder">
-            <form id="login_form">
-                <fieldset>
-                    <!-- <legend> Login </legend> -->
-                    <p class="error" id="login_error"></p>
-                    <!-- <p id = "verified"></p> -->
+    <div class="form-holder">
+        <form id="login_form">
+            <fieldset>
+                <!-- <legend> Login </legend> -->
+                <p class="error" id="login_error"></p>
 
-                    <label> <input type="text" name="email" placeholder = "Email"> </label> <br />
-                    <label> <input type="password" name="password" placeholder = "Password"> </label> <br />
-                    <div id="login-submit">
-                        <input type="submit" value="Login Now">
-                    </div>
-                </fieldset>
-            </form>
+                <label> <input type="text" name="email" placeholder = "Email"> </label> <br />
+                <label> <input type="password" name="password" placeholder = "Password"> </label> <br />
+                <div class = "buttons" id="login-submit">
+                    <input type="submit" value="Login Now">
+                </div>
+            </fieldset>
+        </form>
 
+        <div class = "buttons">
             <button id="load_register"> New to the site? Register here! </button>
+        </div>
 
-            <form id="register_form" style="display: none">
-                <fieldset>
-                    <!-- <legend> Registration </legend> -->
-                    <p class="error" id="reg_error"></p>
+        <form id="register_form" style="display: none">
+            <fieldset>
+                <!-- <legend> Registration </legend> -->
+                <p class="error" id="reg_error"></p>
 
-                    <label><input type="text" name="remail" placeholder = "Email"></label> <br/>
-                    <label><input type="text" name="rfirst_name" placeholder = "First Name"> </label> <br/>
-                    <label><input type="text" name="rlast_name" placeholder =  "Last Name"> </label> <br/>
-                    <label><input type="password" name="rpassword" placeholder = "Password"> </label> <br/>
+                <label><input type="text" name="remail" placeholder = "Email"></label> <br/>
+                <label><input type="text" name="rfirst_name" placeholder = "First Name"> </label> <br/>
+                <label><input type="text" name="rlast_name" placeholder =  "Last Name"> </label> <br/>
+                <label><input type="password" name="rpassword" placeholder = "Password"> </label> <br/>
 
-                    <div id="register-submit">
-                        <input type="submit" value="Register">
-                    </div>
-                </fieldset>
-            </form>
+                <div class = "buttons" id="register-submit">
+                    <input type="submit" value="Register">
+                </div>
+            </fieldset>
+        </form>
 
+        <div class = "buttons">
             <button id="load_login" style="display: none"> Already have an account? Login now! </button>
         </div>
     </div>
