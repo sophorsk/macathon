@@ -35,11 +35,13 @@ li {
 .second_wrapper {
     width: 100%;
     height: 70px;
+    /*border: 1px solid black;*/
 }
 
 .second_wrapper #logo_div {
     width: 70px;
     float: left;
+    margin-left: 46px;
 }
 
 .second_wrapper #logo {
@@ -65,7 +67,8 @@ li {
 
 .second_wrapper #profile{
     width: 350px;
-    float: left;
+    float: right;
+    margin-right: 20px;
 }
 
 .menu * {
@@ -98,7 +101,7 @@ li {
 
 .menu li a {
     text-decoration: none;
-    color: #ccc;
+    color: #b2b2b2;
     font: 12px/1 Helvetica, Verdana, sans-serif;
     text-transform: uppercase;
 
@@ -116,6 +119,11 @@ li {
 .menu li.active a {
     font-weight: bold;
     color: #333;
+}
+
+.all_items {
+    width: 93%;
+    margin: auto;
 }
 
 /*************************/
@@ -184,12 +192,12 @@ div .information-holder {
 
 div .form-holder {
     margin-top: 200px;
-    margin-left: 590px;
+    margin-left: 585px;
     width: 500px;
 }
 
 div #login-submit {
-    margin-left: 45px;
+    margin-left: 47px;
 }
 
 div #load_register {
@@ -197,7 +205,7 @@ div #load_register {
 }
 
 div #register-submit {
-    margin-left: 65px;
+    margin-left: 55px;
 }
 
 div #load_login {
@@ -207,6 +215,7 @@ div #load_login {
 label {
     height: 25px;
 }
+
 label input[type="text"], label input[type="password"] {
     height: 30px;
     font-size: 14px
