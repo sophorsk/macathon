@@ -8,6 +8,10 @@ var Chance = require('chance');
 var nodemailer = require("nodemailer");
 var mail_credential = require('./config/mail.json');
 
+var host = "http://mac-cobo.herokuapp.com";
+var local = "localhost:8080";
+var port = Number(process.env.PORT || 8080);
+
 var db;
 
 db = require('./server/db')(pg, function () {
@@ -362,7 +366,7 @@ db = require('./server/db')(pg, function () {
             text: "Hello user: " + verified_string, // plaintext body
             html: "<div> Dear user </div> " +
                 "<p> Please verify your registration at the following link: </p>" +
-                "localhost:8080/verify/" + verified_string +   // for testing purposes
+                "localhost:8080" + "/verify/" + verified_string +   // for testing purposes
                 "<br>" +
                 "<br>" +
                 "<div> Thank you, </div>" + // html body
@@ -381,6 +385,6 @@ db = require('./server/db')(pg, function () {
         });
     }
 
-    app.listen(8080);
+    app.listen(port);
     console.log("Server listening at localhost:8080");
 });

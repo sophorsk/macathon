@@ -42,7 +42,7 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
                     model: item
                 })).render().el;
 
-                $(itemHtml).prependTo('.sell_items').hide().fadeIn('slow');
+                $(itemHtml).prependTo('.sold_items').hide().fadeIn('slow');
             },
 
             render: function() {

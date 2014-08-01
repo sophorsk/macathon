@@ -316,3 +316,12 @@ div .item_price {
     text-align: center;
     vertical-align: middle;
 }
+
+/******* Sold items and bought items *************/
+div .sold_items_div {
+    margin: auto;
+}
+
+div .bought_items_div {
+    margin: auto;
+}
