@@ -3,10 +3,26 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
 
         var indexView = CoBoView.extend({
 
-            el: $('#content'),
+            el: 'body',
 
             events: {
-                "submit form": "searchItems"
+                "click .sell_item": "sellItem",
+                "click .search_item": "searchItems"
+            },
+
+            sellItem: function() {
+                var $messageArea = this.$('.messageArea');
+                $.post('/api/post_item', {
+                    name: $('input[name=name]').val(),
+                    category: $('select.category option:selected').val(),
+                    description: $('input[name=description]').val(),
+                    price_in_cents: $('input[name=price_in_cents]').val()
+                }, function(data) {
+                    $messageArea.text('Your item has been posted!');
+                }).error(function() {
+                        $messageArea.text('Your item cannot be posted!');
+                    });
+                return false;
             },
 
             searchItems: function() {
@@ -32,6 +48,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
             onItemCollectionReset: function(collection) {
                 var that = this;
                 collection.each(function(item) {
+                    console.log(item);
                     that.onItemAdded(item);
                 })
             },
@@ -60,7 +77,5 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                 }
             }
         });
-
         return indexView;
-
 });

@@ -3,12 +3,12 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
 
         var listingsView = CoBoView.extend({
 
-            el: $("#content"),
-
+            el: 'body',
+            /*
             events: {
                 "click .post_submit": "postItem"
-            },
-
+            },*/
+            /*
             postItem: function() {
                 var $messageArea = this.$('.messageArea');
 
@@ -24,6 +24,20 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
                         $messageArea.text('Your item cannot be posted!');
                     });
                 return false;
+            },*/
+
+            getData: function(url) {
+                var model = null;
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    async: false,
+                    success: function(data) {
+                        model = data;
+                    }
+                });
+                return model;
             },
 
             initialize: function() {
@@ -46,7 +60,12 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
             },
 
             render: function() {
-                this.$el.html(listingTemplate);
+                var urlCurrent = '/api/accounts/me';
+                var account = this.getData(urlCurrent);
+
+                this.$el.html(
+                    _.template(listingTemplate, account)
+                )
             }
         });
 

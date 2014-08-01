@@ -6,7 +6,7 @@ html,body,div,ul,li,h1,h2,h3,fieldset,button,input,p {
 div .wrapper {
     width: 1000px;
     height: auto;
-    margin: 25px auto;
+    margin: 0 auto;
 }
 
 .wrapper #search_form {
@@ -325,3 +325,11 @@ div .sold_items_div {
 div .bought_items_div {
     margin: auto;
 }
+
+/************** Post item form ********************/
+#popup {
+    margin: 0 auto;
+    padding: 0.5em;
+    width: 30%;
+    background: #eee;
+    font-size: 100%;}

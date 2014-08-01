@@ -5,8 +5,10 @@
 require.config({
     paths: {
         jQuery: '/js/libs/jquery',
+        jQueryMigrate: '/js/libs/jquery-migrate',
         Underscore: '/js/libs/underscore',
-        Bootstrap: '/js/libs/bootstrap.min',
+        Bootstrap: '/js/libs/bootstrap',
+        Magnific: '/js/libs/magnific-popup',
         Backbone: '/js/libs/backbone',
         async : '/js/libs/async',
         models: 'models',
@@ -16,8 +18,10 @@ require.config({
     },
 
     shim: {
+        'Magnific': ['jQuery'],
+        'Bootstrap': ['jQuery'],
         'Backbone': ['Underscore', 'jQuery'],
-        'CoBo': ['Backbone']
+        'CoBo': ['Backbone', 'Magnific', 'Bootstrap']
     }
 });
 
