@@ -27,6 +27,77 @@
 
 </div> -->
 
+ <div class="second_wrapper">
+        <div id="logo_div">
+          <img id="logo" src="/images/logo_100x100.png" width = '50px' height = '50px'/>
+        </div>
+
+        <div id="search_form">
+            <form>
+                <input type="text" name="searchString" placeholder="Item's Name">
+                <select class="category">
+                    <option> all </option>
+                    <option> Textbooks </option>
+                    <option> Furniture </option>
+                    <option> Kitchenware </option>
+                    <option> Electronics </option>
+                    <option> Sports Equipment </option>
+                    <option> Clothing </option>
+                    <option> Tickets </option>
+                    <option> Miscellaneous </option>
+                    <option> Free </option>
+                </select>
+                <button type="submit" value="Search Now" class="search_item"> Search </button>
+            </form>
+        </div>
+
+        <div id="profile">
+            <img class="profile_image" src="" >
+            </br>
+
+            <nav class="menu">
+                <ul>
+                    <li> <a href="#" id="post_item"> Posting </a> </li>
+                    <li> <a href="/#listings"> History </a> </li>
+                    <li> <a href="/#messages"> Messages </a> </li>
+                    <!--
+                    <li> <a href="/#profile"> Profile</a> </li> -->
+                    <li> <a href="/api/logout"> Log out</a> </li>
+                </ul>
+            </nav>
+        </div>
+
+        <form>
+            <div id="popup" class="mfp-hide">
+                Name: <input type="text" name="name" size="40"> </br>
+                Description: <input type="text" name="description" size="80"> </br>
+                Category:
+                <select class="category">
+                    <option> all</option>
+                    <option> Textbooks</option>
+                    <option> Furniture</option>
+                    <option> Kitchenware</option>
+                    <option> Electronics</option>
+                    <option> Sports Equipment</option>
+                    <option> Clothing</option>
+                    <option> Tickets</option>
+                    <option> Miscellaneous</option>
+                    <option> Free</option>
+                </select>
+                </br>
+                Price: <input type="text" name="price_in_cents" size="40"> </br>
+                Pictures: <input type="button" value="Upload">
+                </br>
+                </br>
+
+                <button type="submit" class="sell_item"> Post</button>
+                <button type="button" value="cancel" class="cancel"> Cancel</button>
+                <div class="messageArea"></div>
+            </div>
+        </form>
+
+    </div>
+
 <div class="user_information">
     <h3> User Profile </h3>
     <div class="profile">
