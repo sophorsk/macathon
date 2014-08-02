@@ -1,6 +1,8 @@
 College Best Offers - COBO
 ==========================
 
+Introduction
+************
 
 Macathon project
 
