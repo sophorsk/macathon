@@ -1,5 +1,6 @@
-macathon
-========
+College Best Offers - COBO
+==========================
+
 
 Macathon project
 
