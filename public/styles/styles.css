@@ -30,6 +30,7 @@ div .message_box {
 /**** remove bullet from li ******/
 li {
     list-style-type: none;
+    margin: 0 0 10px 0;
 }
 
 .second_wrapper {
@@ -39,9 +40,9 @@ li {
 }
 
 .second_wrapper #logo_div {
-    width: 70px;
+    width: 200px;
     float: left;
-    margin-left: 46px;
+    margin-left: auto;
 }
 
 .second_wrapper #logo {
@@ -52,13 +53,15 @@ li {
 
 .second_wrapper #search_form{
     display: inline-block;
-    width: 520px;
+    width: 600px;
     float: left;
     padding-top: 10px;
+    margin-left: auto;
 }
 
 .second_wrapper #search_form input {
     height: 30px;
+    
 }
 
 .second_wrapper #search_form button {
@@ -66,14 +69,14 @@ li {
 }
 
 .second_wrapper #profile{
-    width: 350px;
+    width: 430px;
     float: right;
-    margin-right: 20px;
+    margin-left: auto;
 }
 
 .menu * {
     margin: 0;
-    padding: 10px 0px 0px 10px;
+    padding: 10px 10px 0px 10px;
 }
 
 /*.menu nav {
@@ -122,8 +125,9 @@ li {
 }
 
 .all_items {
-    width: 93%;
-    margin: auto;
+    width: 100%;
+    margin-left: 100px;
+    
 }
 
 /*************************/
@@ -267,13 +271,14 @@ div .user_information {
 /************************/
 
 div .item_box{
-    margin-left: 10px;
-    margin-top: 25px;
+    margin-left: 40px;
+    margin-top: 20px;
     border: solid 1px cadetblue;
     width: 300px;
     height: 300px;
     float: left;
-    position : relative;
+    position: relative;
+    margin-bottom: auto;
 }
 
 div .item_details {
