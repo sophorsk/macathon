@@ -191,25 +191,25 @@ div .information-holder {
 }
 
 div .form-holder {
-    margin-top: 200px;
-    margin-left: 585px;
+    margin-left: auto;
+    margin:auto;
     width: 500px;
 }
 
 div #login-submit {
-    margin-left: 47px;
+    margin-left: auto;
 }
 
 div #load_register {
-    margin-left: -10px;
+    margin-left: auto;
 }
 
 div #register-submit {
-    margin-left: 55px;
+    margin-left: auto;
 }
 
 div #load_login {
-    margin-left: -27px;
+    margin-left: auto;
 }
 
 label {
