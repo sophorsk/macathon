@@ -385,6 +385,6 @@ db = require('./server/db')(pg, function () {
         });
     }
 
-    app.listen(port);
+    app.listen(process.env.PORT || 8080);
     console.log("Server listening at localhost:8080");
 });
