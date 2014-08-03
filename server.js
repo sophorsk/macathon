@@ -10,7 +10,7 @@ var mail_credential = require('./config/mail.json');
 
 var host = "http://mac-cobo.herokuapp.com";
 var local = "localhost:8080";
-var port = Number(process.env.PORT || 8080);
+var port = process.env.PORT || 8080;
 
 var db;
 
@@ -385,6 +385,6 @@ db = require('./server/db')(pg, function () {
         });
     }
 
-    app.listen(process.env.PORT || 8080);
-    console.log("Server listening at localhost:8080");
+    app.listen(port);
+    console.log("Server listening at " + port);
 });

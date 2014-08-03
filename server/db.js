@@ -1,6 +1,7 @@
 var assert = require("assert");
 
-var dbConnectionString = process.env.DATABASE_URL || "postgres://macathon:12345@localhost:5432/macathon";
+//var dbConnectionString = process.env.DATABASE_URL || "postgres://macathon:12345@localhost:5432/macathon";
+var dbConnectionString = process.env.DATABASE_URL;
 var pg;
 var fs = require("fs");
 
