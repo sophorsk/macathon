@@ -20,8 +20,8 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                 }, function(data) {
                     $messageArea.text('Your item has been posted!');
                 }).error(function() {
-                        $messageArea.text('Your item cannot be posted!');
-                    });
+                    $messageArea.text('Your item cannot be posted!');
+                });
                 return false;
             },
 
@@ -32,7 +32,6 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                         q: $('input[name=searchString]').val()
                     },
                     function(data) {
-                        console.log(data);
                         view.render(data);
                     }).error(function() {
                         $('.all_items').text('No items found !');

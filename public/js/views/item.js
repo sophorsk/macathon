@@ -5,11 +5,12 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
 
             events: {
                 "click .loadMessagePage": "loadMessagePage",
-                "hover ": "loadDetails"
+                "click .view_item": "loadDetails"
             },
 
             loadDetails: function() {
-
+                var item = this.model.toJSON();
+                console.log(item);
             },
 
             loadMessagePage: function() {
