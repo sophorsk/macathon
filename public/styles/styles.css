@@ -13,14 +13,6 @@ div .wrapper {
     margin: 0 auto;
 }
 
-
-/*
-div .item_box:hover {
-    opacity: 1;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-}*/
-
 div .message_box {
     width: 300px;
     height: 300px;
@@ -36,8 +28,8 @@ li {
 .second_wrapper {
     width: 100%;
     height: 35px;
-    /*background-color: #005387;*/
-    background-color: #829AA8;
+    background-color: #F3F3F3;
+    /*background-color: #829AA8;*/
     position: relative;
     z-index: 1;
     padding: 8px 0;
@@ -248,7 +240,8 @@ input[type="submit"], button {
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
     color: #1A1F50;
-    background: #E7C63F;
+    /*background: #E7C63F;*/
+    background: #71B0BA;
     font: 16px Georgia, "Times New Roman", Times, serif;
     padding: 5px 15px;
     border: none;
@@ -290,7 +283,7 @@ div .user_information {
 div .item_box{
     margin-left: 40px;
     margin-top: 20px;
-    border: solid 1px cadetblue;
+    border: solid 1px #9aa09e;
     width: 300px;
     height: 300px;
     float: left;
@@ -305,7 +298,7 @@ div .item_details {
     height : 75px;
     position : absolute;
     bottom : 0;
-    border-top: 1px solid cadetblue;
+    border-top: 1px solid #9aa09e;
 }
 
 div .item_seller {
@@ -321,7 +314,7 @@ div .item_seller {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid cadetblue;
+    border: 1px solid #9aa09e;
 }
 
 div .item_name {
@@ -348,6 +341,24 @@ div .item_price {
     vertical-align: middle;
 }
 
+div .item_box .view_item {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+}
+
+div .item_box .image {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    opacity:1.0;
+}
+
+div .item_box .image:hover {
+    opacity: 0.3;
+    filter: alpha(opacity=30)
+}
+
 /******* Sold items and bought items *************/
 div .sold_items_div {
     margin: auto;
@@ -361,3 +372,7 @@ div .bought_items_div {
 #popup {
     margin: 0 auto;
     padding: 0.5em;
+    width: 30%;
+    background: #eee;
+    line-height: 30px;
+}
