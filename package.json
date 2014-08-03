@@ -20,7 +20,7 @@
         "node": "0.10.x"
     },
     "scripts": {
-        "start": "node index.js",
+        "start": "node server.js",
         "test": "mocha"
     }
 }

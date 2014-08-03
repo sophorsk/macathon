@@ -48,7 +48,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
             onItemCollectionReset: function(collection) {
                 var that = this;
                 collection.each(function(item) {
-                    console.log(item);
+                    //console.log(item.toJSON());
                     that.onItemAdded(item);
                 })
             },
@@ -65,7 +65,6 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
 
                 if (resultList != null) {
                     _.each(resultList, function(itemJson) {
-
                         // get each item from resultList
                         var itemModel = new Item(itemJson);
                         var itemHtml = (new ItemView(

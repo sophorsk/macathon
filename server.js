@@ -19,12 +19,13 @@ db = require('./server/db')(pg, function () {
     app.configure(function () {
         app.set('view engine', 'jade');
         app.use(express.static(__dirname + '/public'));
-        app.use(express.limit('1mb'));
+        app.use(express.json({limit: '50mb'}));
+        app.use(express.urlencoded({limit: '50mb'}));
         app.use(function (req, res, next) {
             console.log('%s %s', req.method, req.url);
             next();
         });
-        app.use(express.bodyParser());
+        //app.use(express.bodyParser());
         app.use(express.cookieParser());
         app.use(express.session({
             secret: "macathonsecretkey",

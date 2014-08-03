@@ -26,7 +26,6 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
                    dataType : 'json',
                    async : false,
                    success : function(account) {
-                       console.log("Got account: " + account);
                        item.seller_name = account.first_name + ' ' + account.last_name[0] + '.';
                    }
                 });
