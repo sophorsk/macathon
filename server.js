@@ -19,12 +19,12 @@ db = require('./server/db')(pg, function () {
     app.configure(function () {
         app.set('view engine', 'jade');
         app.use(express.static(__dirname + '/public'));
-        app.use(express.limit('1mb'));
+        app.use(express.json({limit: '50mb'}));
+        app.use(express.urlencoded({limit: '50mb'}));
         app.use(function (req, res, next) {
             console.log('%s %s', req.method, req.url);
             next();
         });
-        app.use(express.bodyParser());
         app.use(express.cookieParser());
         app.use(express.session({
             secret: "macathonsecretkey",
@@ -366,7 +366,7 @@ db = require('./server/db')(pg, function () {
             text: "Hello user: " + verified_string, // plaintext body
             html: "<div> Dear user </div> " +
                 "<p> Please verify your registration at the following link: </p>" +
-                "localhost:8080" + "/verify/" + verified_string +   // for testing purposes
+                local + "/verify/" + verified_string +   // for testing purposes
                 "<br>" +
                 "<br>" +
                 "<div> Thank you, </div>" + // html body

@@ -5,11 +5,12 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
 
             events: {
                 "click .loadMessagePage": "loadMessagePage",
-                "hover ": "loadDetails"
+                "click .view_item": "loadDetails"
             },
 
             loadDetails: function() {
-
+                var item = this.model.toJSON();
+                console.log(item);
             },
 
             loadMessagePage: function() {
@@ -26,7 +27,6 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
                    dataType : 'json',
                    async : false,
                    success : function(account) {
-                       console.log("Got account: " + account);
                        item.seller_name = account.first_name + ' ' + account.last_name[0] + '.';
                    }
                 });

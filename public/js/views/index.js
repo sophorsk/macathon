@@ -20,8 +20,8 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                 }, function(data) {
                     $messageArea.text('Your item has been posted!');
                 }).error(function() {
-                        $messageArea.text('Your item cannot be posted!');
-                    });
+                    $messageArea.text('Your item cannot be posted!');
+                });
                 return false;
             },
 
@@ -32,7 +32,6 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
                         q: $('input[name=searchString]').val()
                     },
                     function(data) {
-                        console.log(data);
                         view.render(data);
                     }).error(function() {
                         $('.all_items').text('No items found !');
@@ -48,7 +47,7 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
             onItemCollectionReset: function(collection) {
                 var that = this;
                 collection.each(function(item) {
-                    console.log(item);
+                    //console.log(item.toJSON());
                     that.onItemAdded(item);
                 })
             },
@@ -65,7 +64,6 @@ define(["CoBoView", 'text!templates/index.html', "views/item", "models/Item"],
 
                 if (resultList != null) {
                     _.each(resultList, function(itemJson) {
-
                         // get each item from resultList
                         var itemModel = new Item(itemJson);
                         var itemHtml = (new ItemView(
