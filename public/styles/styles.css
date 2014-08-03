@@ -35,12 +35,19 @@ li {
 
 .second_wrapper {
     width: 100%;
-    height: 70px;
+    height: 35px;
+    /*background-color: #005387;*/
+    background-color: #829AA8;
+    position: relative;
+    z-index: 1;
+    padding: 8px 0;
+    box-shadow: #272626 0 0 2px;
+    margin: 0 auto;
     /*border: 1px solid black;*/
 }
 
 .second_wrapper #logo_div {
-    width: 200px;
+    width: 13.70%;
     float: left;
     margin-left: auto;
 }
@@ -49,6 +56,9 @@ li {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
+    margin: inherit;
+    width: 17%;
 }
 
 .second_wrapper #search_form{
@@ -61,17 +71,22 @@ li {
 
 .second_wrapper #search_form input {
     height: 30px;
+    width: 55%;
     
+    margin-top: -7px;
 }
 
 .second_wrapper #search_form button {
-    margin-top: -10px;
+    margin-top: -7px;
+    height: 30px;
+    width: 17%;
 }
 
 .second_wrapper #profile{
-    width: 430px;
+    width: 39.2%;
     float: right;
     margin-left: auto;
+    margin-top: -7px;
 }
 
 .menu * {
@@ -104,7 +119,7 @@ li {
 
 .menu li a {
     text-decoration: none;
-    color: #b2b2b2;
+    color: #1B1A1A;
     font: 12px/1 Helvetica, Verdana, sans-serif;
     text-transform: uppercase;
 
@@ -202,6 +217,7 @@ div .form-holder {
 
 div #login-submit {
     margin-left: auto;
+    margin-bottom: 10px;
 }
 
 div #load_register {
@@ -210,6 +226,7 @@ div #load_register {
 
 div #register-submit {
     margin-left: auto;
+    margin-bottom: 10px;
 }
 
 div #load_login {
@@ -222,7 +239,7 @@ label {
 
 label input[type="text"], label input[type="password"] {
     height: 30px;
-    font-size: 14px
+    font-size: 14px;
 }
 
 input[type="submit"], button {
@@ -230,8 +247,8 @@ input[type="submit"], button {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-    color: #fff;
-    background: #98C1FF;
+    color: #1A1F50;
+    background: #E7C63F;
     font: 16px Georgia, "Times New Roman", Times, serif;
     padding: 5px 15px;
     border: none;
@@ -344,6 +361,3 @@ div .bought_items_div {
 #popup {
     margin: 0 auto;
     padding: 0.5em;
-    width: 30%;
-    background: #eee;
-    font-size: 100%;}
