@@ -366,7 +366,7 @@ db = require('./server/db')(pg, function () {
             text: "Hello user: " + verified_string, // plaintext body
             html: "<div> Dear user </div> " +
                 "<p> Please verify your registration at the following link: </p>" +
-                local + "/verify/" + verified_string +   // for testing purposes
+                host + "/verify/" + verified_string +   // for testing purposes
                 "<br>" +
                 "<br>" +
                 "<div> Thank you, </div>" + // html body
