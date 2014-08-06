@@ -2,10 +2,10 @@
 <script>
     $(document).ready(function() {
         $(document).on('mouseenter', '.item_box', function() {
-            $(this).find(":button").show();
+            $(this).find(".view_item").show();
         }).on('mouseleave', '.item_box', function() {
-                    $(this).find(":button").hide();
-                });
+            $(this).find(".view_item").hide();
+        });
     });
 </script>
 
@@ -20,7 +20,7 @@
       <% } %>
     </div>
 
-    <button type="button" class="view_item" style="display: none;"> View </button>
+    <button type="button" class="view_item buttons" style="display: none;"> View </button>
 
     <div class="item_details">
         <div class="item_seller">
@@ -32,8 +32,8 @@
             <%= name %>
         </div>
 
-        <div class="item_price loadMessagePage">
+        <button class="item_price loadMessagePage">
             <%= "$" + (price_in_cents / 100).toFixed(2) %>
-        </div>
+        </button>
     </div>
 </div>

@@ -248,7 +248,7 @@ label input[type="text"], label input[type="password"] {
     font-size: 14px;
 }
 
-input[type="submit"], button {
+input[type="submit"], .buttons {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -263,11 +263,6 @@ input[type="submit"], button {
     border: none;
 }
 
-/*.buttons {
-    margin: 0 auto;
-    display: block;
-    width: 300px;
-}*/
 
 /********************************/
 
@@ -365,16 +360,22 @@ div .item_name {
     vertical-align: middle;
 }
 
-div .item_price {
-    display: inline-block;
-    width: 40px;
+.item_price {
+    width: 70px;
     height : 75px;
     font: 20px sans-serif;
     color: #3333AA;
-    margin: 0;
-    padding: 0;
+    background-color: #f7f7f7;
+    margin-bottom: 58px;
+    margin-left: 12px; 
+    border-top: #9aa09e;
+    border-right: #9aa09e;
+    border-bottom: #9aa09e;
+    border-left: 1px solid #9aa09e;
+
+/*    display: inline-block;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: middle;*/
 }
 
 div .item_box .view_item {
