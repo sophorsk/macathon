@@ -160,7 +160,7 @@ div #login-top-bar .top-bar-title {
 div #login-content{
     width: 100%;
     height: 100%;
-    background-image: url("../images/login-background-dark-2.jpg");
+    background-image: url("../images/login-background-dark.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -272,8 +272,11 @@ input[type="submit"], button {
 /********************************/
 
 /************* Listing **********/
+
+.user_information img {
+    margin-top: 20px;
+}
 .user_information .profile {
-    margin-top: -10px;
     text-align: center;
 }
 
@@ -283,6 +286,9 @@ input[type="submit"], button {
     margin-left: 100px;
 }
 
+.your_items h3 {
+    margin-left: 140px;
+}
 
 div .post_item {
     margin-left: 50px;
