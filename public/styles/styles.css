@@ -183,7 +183,8 @@ div .page_title {
 }
 
 .welcome-message {
-    color: #71B0BA;
+    color: #FF8B04;
+    /*color: #B20000;*/
     font-size: 32px;
     float: left;
     text-align: center;
@@ -197,7 +198,9 @@ div .information-holder {
 
 .statement {
     font-size: 20px;
-    color: #71B0BA;
+    /*font-weight: bold*/
+    color: #FF8B04;
+    /*color: #B20000;*/
     line-height: 25px;
     text-align: center
 }
@@ -240,9 +243,11 @@ input[type="submit"], button {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-    color: #1A1F50;
+    /*color: #1A1F50;*/
+    color: #fff;
     /*background: #E7C63F;*/
-    background: #71B0BA;
+    /*background: #71B0BA;*/
+    background: #5D016D;
     font: 16px Georgia, "Times New Roman", Times, serif;
     padding: 5px 15px;
     border: none;
@@ -257,11 +262,22 @@ input[type="submit"], button {
 /********************************/
 
 /************* Listing **********/
+.user_information .profile {
+    margin-top: -10px;
+    text-align: center;
+}
+
+.sold_items, .bought_items {
+    width: 100%;
+    margin-top: -10px;
+    margin-left: 100px;
+}
+
+
 div .post_item {
     margin-left: 50px;
     margin-top: 50px;
 }
-
 
 div .your_items {
     margin-left: 50px;
@@ -271,10 +287,10 @@ div .your_items {
 
 /***** profile page *****/
 
-div .user_information {
+/*div .user_information {
     margin-left: 50px;
     margin-top: 50px;
-}
+}*/
 
 /************************/
 
