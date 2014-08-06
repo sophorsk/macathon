@@ -1,6 +1,23 @@
+<script>
+    $(document).ready(function() {
+        $('#post_item').magnificPopup({
+            type: 'inline',
+            items: {src: '#popup'},
+            preloader: false,
+            modal: true
+        });
+
+        $(document).on('click', '.cancel', function(e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+            $('form')[1].reset();
+        });
+    });
+</script>
+
 <div class="second_wrapper">
     <div id="logo_div">
-        <a href="/#index" id="logo"> <img src="/images/logo_100x100.png" width = '50px' height = '50px'/> </a>
+        <a href="/" id="logo"> <img src="/images/logo_100x100.png" width = '50px' height = '50px'/> </a>
     </div>
 
     <div id="search_form">
