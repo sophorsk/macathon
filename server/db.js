@@ -272,7 +272,7 @@ storeTestData = function(callback) {
     var email_address_2 = "test2@macalester.edu";
     var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // "password"
 
-    exports.register(email_address_1, password_sha1, "Obama", "Barack", "123456789012345", true, loadTestImage('Obama'), function(err) {
+    exports.register(email_address_1, password_sha1, "Barack", "Obama", "123456789012345", true, loadTestImage('Obama'), function(err) {
     exports.register(email_address_2, password_sha1, "Shakira", "Ripoll", "123456789012345", true, loadTestImage('Shakira'), function(err) {
     exports.login(email_address_1, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Essentials Watch",

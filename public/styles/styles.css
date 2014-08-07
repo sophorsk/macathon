@@ -273,6 +273,11 @@ input[type="submit"], .buttons {
 }
 .user_information .profile {
     text-align: center;
+    margin-top: 10px;
+}
+
+.user_information .pro_pic {
+    border-radius: 50%;
 }
 
 .sold_items, .bought_items {
