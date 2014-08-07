@@ -28,6 +28,7 @@ define(['CoBoView', 'text!templates/item.html', 'views/message'],
                    async : false,
                    success : function(account) {
                        item.seller_name = account.first_name + ' ' + account.last_name[0] + '.';
+                       item.seller_picture = account.profile_picture;
                    }
                 });
                 this.$el.html(_.template(itemTemplate, item));

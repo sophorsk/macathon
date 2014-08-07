@@ -70,7 +70,7 @@ db = require('./server/db')(pg, function () {
         var pending_key = chance.hash({length: 15});
         var verified = false;
 
-        db.register(email, password_hash, first_name, last_name, pending_key, verified, function(err) {
+        db.register(email, password_hash, first_name, last_name, pending_key, verified, photo, function(err) {
             if (err) {
                 res.send(500, err);
             } else {

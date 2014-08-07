@@ -73,7 +73,7 @@ exports = module.exports = function (_pg, callback) {
         "    time_created      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
         "    pending_key       CHAR(15),\n" +
         "    verified          BOOLEAN NOT NULL,\n" +     // add verified status of an email account
-        "    profile_picture   VARCHAR(200000)\n" +
+        "    profile_picture   VARCHAR(1000000)\n" +
         ");\n";
 
     sql += "CREATE TABLE IF NOT EXISTS message\n" +
@@ -138,11 +138,11 @@ exports.findAccountById = function (account_id, callback) {
         });
 }
 
-exports.register = function (email_address, password_sha1, first_name, last_name, pending_key, verified, callback) {
+exports.register = function (email_address, password_sha1, first_name, last_name, pending_key, verified, profile_picture, callback) {
     runQuery("INSERT INTO account (email_address, password_sha1, " +
-        "first_name, last_name, pending_key, verified) " +
-        "VALUES ($1, $2, $3, $4, $5, $6);\n",
-        [email_address, password_sha1, first_name, last_name, pending_key, verified],
+        "first_name, last_name, pending_key, verified, profile_picture) " +
+        "VALUES ($1, $2, $3, $4, $5, $6, $7);\n",
+        [email_address, password_sha1, first_name, last_name, pending_key, verified, profile_picture],
         function (err, result) {
             callback(err);
         });
@@ -272,8 +272,8 @@ storeTestData = function(callback) {
     var email_address_2 = "test2@macalester.edu";
     var password_sha1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // "password"
 
-    exports.register(email_address_1, password_sha1, "Joe", "Example", "123456789012345", true, function(err) {
-    exports.register(email_address_2, password_sha1, "Bob", "Testing", "123456789012345", true, function(err) {
+    exports.register(email_address_1, password_sha1, "Obama", "Barack", "123456789012345", true, loadTestImage('Obama'), function(err) {
+    exports.register(email_address_2, password_sha1, "Shakira", "Ripoll", "123456789012345", true, loadTestImage('Shakira'), function(err) {
     exports.login(email_address_1, password_sha1, function(err, account) {
     exports.postItem(account.id, { name : "Essentials Watch",
                                    category : "Watches",

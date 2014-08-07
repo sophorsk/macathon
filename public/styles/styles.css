@@ -367,12 +367,9 @@ div .item_name {
     color: #3333AA;
     background-color: #f7f7f7;
     margin-bottom: 58px;
-    margin-left: 12px; 
-    border-top: #9aa09e;
-    border-right: #9aa09e;
-    border-bottom: #9aa09e;
+    margin-left: 12px;
+    border: #9aa09e;
     border-left: 1px solid #9aa09e;
-
 /*    display: inline-block;
     text-align: center;
     vertical-align: middle;*/
