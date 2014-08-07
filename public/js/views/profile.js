@@ -26,7 +26,6 @@ define(['CoBoView', 'text!templates/profile.html'],
             render: function() {
                 var urlCurrent = '/api/accounts/me';
                 var account = this.getData(urlCurrent);
-
                 this.$el.html(
                     _.template(profileTemplate, account)
                 );

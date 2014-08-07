@@ -76,7 +76,6 @@ define(['CoBoView', 'text!templates/listings.html', 'views/item'],
             render: function() {
                 var urlCurrent = '/api/accounts/me';
                 var account = this.getData(urlCurrent);
-
                 this.$el.html(
                     _.template(listingTemplate, account)
                 )
